@@ -1,10 +1,10 @@
 import React from 'react';
 
-function profileView() {
+function UserProfile() {
 
     return( 
         <p>This is the profile view</p>
     )
 }
 
-export default profileView;
+export default UserProfile;

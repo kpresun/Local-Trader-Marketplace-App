@@ -22,6 +22,7 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 
 //Components I created
 import Marketplace from '../../MarketPlaceView/MarketPlaceView';
+import UserProfile from '../UserProfile/UserProfile';
 
 function App() {
   const dispatch = useDispatch();
@@ -42,9 +43,9 @@ function App() {
           <Route
             // shows AboutPage at all times (logged in or not)
             exact
-            path="/about"
+            path="/marketplace"
           >
-            <AboutPage />
+            <Marketplace />
           </Route>
 
           {/* For protected routes, the view could show one of several things on the same route.
@@ -62,9 +63,9 @@ function App() {
           <ProtectedRoute
             // logged in shows InfoPage else shows LoginPage
             exact
-            path="/info"
+            path="/profilepage"
           >
-            <InfoPage />
+            <UserProfile />
           </ProtectedRoute>
 
           <ProtectedRoute exact path='/marketplace'>

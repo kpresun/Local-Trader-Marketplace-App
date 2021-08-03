@@ -19,26 +19,26 @@ function Nav() {
 
   return (
     <div className="nav">
-      <Link to="/home">
-        <h2 className="nav-title">Prime Solo Project</h2>
+      <Link to="/marketplace">
+        <h2 className="nav-title">Local Traders</h2>
       </Link>
       <div>
         <Link className="navLink" to={loginLinkData.path}>
           {loginLinkData.text}
         </Link>
 
+        <Link className="navLink" to="/marketplace">
+          Marketplace
+        </Link>
+
         {user.id && (
           <>
-            <Link className="navLink" to="/info">
-              Info Page
+            <Link className="navLink" to="/profilepage">
+              Profile Page
             </Link>
             <LogOutButton className="navLink" />
           </>
         )}
-
-        <Link className="navLink" to="/about">
-          About
-        </Link>
       </div>
     </div>
   );
@@ -47,7 +47,7 @@ function Nav() {
 export default Nav;
 
 
-// Save for new naviagation
+// Save for new navigation
 // import React from "react";
 // import { makeStyles } from "@material-ui/core/styles";
 // import Paper from "@material-ui/core/Paper";
