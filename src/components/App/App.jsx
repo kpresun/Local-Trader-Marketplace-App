@@ -13,9 +13,9 @@ import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
 
 //Components
-import AboutPage from '../AboutPage/AboutPage';
-import UserPage from '../UserPage/UserPage';
-import InfoPage from '../InfoPage/InfoPage';
+// import AboutPage from '../AboutPage/AboutPage';
+// import UserPage from '../UserPage/UserPage';
+// import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
@@ -23,6 +23,7 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 //Components I created
 import Marketplace from '../../MarketPlaceView/MarketPlaceView';
 import UserProfile from '../UserProfile/UserProfile';
+import ActivityView from '../ActivityView/ActivityView';
 
 function App() {
   const dispatch = useDispatch();
@@ -55,9 +56,9 @@ function App() {
           <ProtectedRoute
             // logged in shows UserPage else shows LoginPage
             exact
-            path="/user"
+            path="/myactivity"
           >
-            <UserPage />
+            <ActivityView />
           </ProtectedRoute>
 
           <ProtectedRoute
@@ -81,7 +82,7 @@ function App() {
             // - else shows LoginPage at /login
             exact
             path="/login"
-            authRedirect="/user"
+            authRedirect="/marketplace"
           >
             <LoginPage />
           </ProtectedRoute>
@@ -92,7 +93,7 @@ function App() {
             // - else shows RegisterPage at "/registration"
             exact
             path="/registration"
-            authRedirect="/user"
+            authRedirect="/marketplace"
           >
             <RegisterPage />
           </ProtectedRoute>
@@ -103,7 +104,7 @@ function App() {
             // - else shows LandingPage at "/home"
             exact
             path="/home"
-            authRedirect="/user"
+            authRedirect="/marketplace"
           >
             <LandingPage />
           </ProtectedRoute>

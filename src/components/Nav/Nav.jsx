@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import LogOutButton from '../LogOutButton/LogOutButton';
+// import LogOutButton from '../LogOutButton/LogOutButton';
 import './Nav.css';
 import {useSelector} from 'react-redux';
 
@@ -13,8 +13,8 @@ function Nav() {
   };
 
   if (user.id != null) {
-    loginLinkData.path = '/user';
-    loginLinkData.text = 'This Home';
+    loginLinkData.path = '/myactivity';
+    loginLinkData.text = 'Activty';
   }
 
   return (
@@ -36,7 +36,7 @@ function Nav() {
             <Link className="navLink" to="/profilepage">
               Profile Page
             </Link>
-            <LogOutButton className="navLink" />
+            {/* <LogOutButton className="navLink" /> */}
           </>
         )}
       </div>
