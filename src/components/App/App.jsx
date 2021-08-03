@@ -1,18 +1,18 @@
+//Basic imports
 import React, { useEffect } from 'react';
-import {
-  HashRouter as Router,
-  Route,
-  Redirect,
-  Switch,
-} from 'react-router-dom';
+import {HashRouter as Router, Route, Redirect, Switch} from 'react-router-dom';
+// CSS
+import './App.css';
 
+//Hooks needed
 import { useDispatch } from 'react-redux';
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
+//Navigation and footer
 import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
 
-import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
-
+//Components
 import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
@@ -20,7 +20,8 @@ import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 
-import './App.css';
+//Components I created
+import Marketplace from '../../MarketPlaceView/MarketPlaceView';
 
 function App() {
   const dispatch = useDispatch();
@@ -64,6 +65,10 @@ function App() {
             path="/info"
           >
             <InfoPage />
+          </ProtectedRoute>
+
+          <ProtectedRoute exact path='/marketplace'>
+            <Marketplace />
           </ProtectedRoute>
 
           {/* When a value is supplied for the authRedirect prop the user will
