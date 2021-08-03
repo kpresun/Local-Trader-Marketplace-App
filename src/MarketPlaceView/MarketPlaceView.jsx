@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 
 function Marketplace() {
 
-    const allproducts = useSelector(store => store.productReducer);
+    const allProducts = useSelector(store => store.marketplace);
 
     useEffect({
         dispatch: "FETCH_PRODUCTS"
@@ -14,7 +14,7 @@ function Marketplace() {
         <section>
             <h1>This is the marketplace view</h1>
             <article>
-                {allproducts.map(product => {
+                {allProducts.map(product => {
                     return (
                         <div key={product.id} >
                             <img src={product.img_url} ></img>
