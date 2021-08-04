@@ -13,7 +13,8 @@ function Marketplace() {
         dispatch({ type: 'FETCH_PRODUCTS'});
     }, []);
 
-    const bookmarkClick = () => {
+    const bookmarkClick = (productId) => {
+        dispatch({ type: 'ADD_TO_BOOKMARK', payload: productId})
         history.push("/bookmark");
     }
 
@@ -29,7 +30,7 @@ function Marketplace() {
                             <h3>Price: ${product.price}</h3>
                             <h4>Description: {product.description}</h4>
                             <button>Contact</button>
-                            <button onClick={bookmarkClick}>Bookmark</button>
+                            <button onClick={() => {bookmarkClick(product.id)}}>Bookmark</button>
                         </div>
                     )
                 })}
