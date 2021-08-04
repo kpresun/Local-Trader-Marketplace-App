@@ -14,13 +14,18 @@ function BookmarkView() {
     return(
         <section>
             <h1>Bookmark to buy list</h1>
-            <ul>
+            <article>
                 {userBookmark.map(item => {
                     return (
-                        <li key={item.id} >{item.name}</li>
+                        <div key={item.id}>
+                            <img src={item.image_url} height="200" />
+                            <h2>{item.name}</h2>
+                            <h3>Price: ${item.price}</h3>
+                            <h4>Description: {item.description}</h4>
+                        </div>
                     )
                 })}
-            </ul>
+            </article>
         </section>
     )
 }
