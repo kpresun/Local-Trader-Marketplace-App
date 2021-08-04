@@ -24,6 +24,7 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 import Marketplace from '../../MarketPlaceView/MarketPlaceView';
 import UserProfile from '../UserProfile/UserProfile';
 import ActivityView from '../ActivityView/ActivityView';
+import BookmarkView from '../BookmarkView/BookmarkView';
 
 function App() {
   const dispatch = useDispatch();
@@ -73,12 +74,16 @@ function App() {
             <Marketplace />
           </ProtectedRoute>
 
+          <ProtectedRoute exact path="/bookmark">
+            <BookmarkView />
+          </ProtectedRoute>
+
           {/* When a value is supplied for the authRedirect prop the user will
             be redirected to the path supplied when logged in, otherwise they will
             be taken to the component and path supplied. */}
           <ProtectedRoute
             // with authRedirect:
-            // - if logged in, redirects to "/user"
+            // - if logged in, redirects to "/marketplace"
             // - else shows LoginPage at /login
             exact
             path="/login"
@@ -89,7 +94,7 @@ function App() {
 
           <ProtectedRoute
             // with authRedirect:
-            // - if logged in, redirects to "/user"
+            // - if logged in, redirects to "/marketplace"
             // - else shows RegisterPage at "/registration"
             exact
             path="/registration"
@@ -100,7 +105,7 @@ function App() {
 
           <ProtectedRoute
             // with authRedirect:
-            // - if logged in, redirects to "/user"
+            // - if logged in, redirects to "/marketplace"
             // - else shows LandingPage at "/home"
             exact
             path="/home"
@@ -108,7 +113,6 @@ function App() {
           >
             <LandingPage />
           </ProtectedRoute>
-
           {/* If none of the other routes matched, we will show a 404. */}
           <Route>
             <h1>404</h1>

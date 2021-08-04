@@ -1,11 +1,13 @@
 import { put, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
+// import { response } from 'express'; NOT NEEDED, TYPE ERROR
 
-// worker Saga: will be fired on "REGISTER" actions
-function* getProducts() {
+// starts on useEffect
+function* getProducts(action) {
   try {
-    yield axios.get('/api/product');
-    yield put({ type: 'SET_PRODUCTS' });
+    const products = yield axios.get('/api/product');
+    console.log('Inside Get Products, the response data is:', products.data);
+    yield put({ type: 'SET_PRODUCTS', payload: products.data});
   } catch (error) {
     console.log('--ERROR-- cannot retrieve products:', error);
   }

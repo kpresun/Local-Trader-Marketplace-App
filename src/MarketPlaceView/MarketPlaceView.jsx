@@ -1,14 +1,21 @@
 import React from 'react';
 import { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 function Marketplace() {
 
-    const allProducts = useSelector(store => store.marketplace);
+    const history = useHistory();
+    const dispatch = useDispatch();
+    const allProducts = useSelector(store => store.productReducer);
 
-    useEffect({
-        dispatch: "FETCH_PRODUCTS"
+    useEffect(() => {
+        dispatch({ type: 'FETCH_PRODUCTS'});
     }, []);
+
+    const bookmarkClick = () => {
+        history.push("/bookmark");
+    }
 
     return(
         <section>
@@ -17,10 +24,12 @@ function Marketplace() {
                 {allProducts.map(product => {
                     return (
                         <div key={product.id} >
-                            <img src={product.img_url} ></img>
+                            <img src={product.image_url} height="200" ></img>
                             <h2>{product.name}</h2>
-                            <h3>Price: {product.price}</h3>
+                            <h3>Price: ${product.price}</h3>
                             <h4>Description: {product.description}</h4>
+                            <button>Contact</button>
+                            <button onClick={bookmarkClick}>Bookmark</button>
                         </div>
                     )
                 })}

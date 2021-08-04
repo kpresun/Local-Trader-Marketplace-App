@@ -9,6 +9,7 @@ router.get('/', (req, res) => {
   const query = `SELECT * FROM "product" ORDER BY "created_date" ASC;`;
     pool.query(query)
     .then(dbResponse => {
+        console.log(dbResponse);
         res.send(dbResponse.rows);
     })
     .catch(error => {
