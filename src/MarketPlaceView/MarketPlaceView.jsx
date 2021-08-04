@@ -8,13 +8,16 @@ function Marketplace() {
     const history = useHistory();
     const dispatch = useDispatch();
     const allProducts = useSelector(store => store.productReducer);
+    // const currentUser = useSelector(store => store.user);
 
     useEffect(() => {
         dispatch({ type: 'FETCH_PRODUCTS'});
     }, []);
 
-    const bookmarkClick = (productId) => {
-        dispatch({ type: 'ADD_TO_BOOKMARK', payload: productId})
+    // const thisUser = currentUser
+
+    const bookmarkClick = (product) => {
+        dispatch({ type: 'ADD_TO_BOOKMARK', payload: product})
         history.push("/bookmark");
     }
 
@@ -29,8 +32,10 @@ function Marketplace() {
                             <h2>{product.name}</h2>
                             <h3>Price: ${product.price}</h3>
                             <h4>Description: {product.description}</h4>
+                            <h4>user id is:{product.user_id}</h4>
+                            <h4>product id is: {product.id}</h4>
                             <button>Contact</button>
-                            <button onClick={() => {bookmarkClick(product.id)}}>Bookmark</button>
+                            <button onClick={() => {bookmarkClick(product)}}>Bookmark</button>
                         </div>
                     )
                 })}

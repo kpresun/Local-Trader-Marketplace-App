@@ -14,6 +14,7 @@ router.get('/', (req, res) => {
     })
     .catch(error => {
         console.log('--ERROR-- route.get, unable to retrieve db rows:', error);
+        res.sendStatus(500);
     })
 });
 
