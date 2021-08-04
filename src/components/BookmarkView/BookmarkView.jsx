@@ -17,7 +17,7 @@ function BookmarkView() {
             <ul>
                 {userBookmark.map(item => {
                     return (
-                        <li key={item.id} >{item.product_id}</li>
+                        <li key={item.id} >{item.name}</li>
                     )
                 })}
             </ul>

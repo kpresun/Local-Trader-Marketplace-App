@@ -28,7 +28,10 @@ router.post('/', (req, res) => {
  * GET route: Will retrieve bookmarks from bookmark table
  */
  router.get('/', (req, res) => {
-    const query = `SELECT * FROM "bookmark";`;
+    const query = `SELECT "bookmark".id, "product".image_url, "product".name, "product".price, "product".description			
+    FROM "product" JOIN "bookmark"
+    ON "product".id = "bookmark".product_id
+    JOIN "user" ON "bookmark".user_id = "user".id;`;
     pool.query(query)
     .then(dbResponse => {
       console.log('--log-- router.get, successfully retrieved bookmarks:', dbResponse);
