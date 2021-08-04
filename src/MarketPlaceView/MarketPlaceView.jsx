@@ -19,8 +19,8 @@ function Marketplace() {
 
     // handles adding item to bookmark
     const bookmarkClick = (product) => {
-        const thisProductId = userBookmark.data.id;
-        if (!thisProductId) {
+        // const thisProductId = userBookmark.data.id;
+        if (product) {
             dispatch({ type: 'ADD_TO_BOOKMARK', payload: product})
         } else {
             dispatch({ type: 'DELETE_FROM_BOOKMARK', payload: product})
