@@ -14,7 +14,7 @@ function Marketplace() {
 
     useEffect(() => {
         dispatch({ type: 'FETCH_PRODUCTS'});
-        dispatch({ type: 'FETCH_BOOKMARKS'}) //TRY THISS!!!!
+        // dispatch({ type: 'FETCH_BOOKMARKS'}) maybe for the conditional rendering
     }, []);
 
     // handles adding item to bookmark

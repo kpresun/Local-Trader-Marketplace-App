@@ -19,46 +19,70 @@ router.post('/', (req, res) => {
         // res.send(dbResponse.rows);
     })
     .catch(error => {
-        console.log('--ERROR-- unable to retrieve bookmark:', error);
+        console.log('--ERROR-- unable to return bookmark:', error);
         res.sendStatus(500);
     })
 });
 
 /**
- * GET route: Will retrieve bookmarks from bookmark table
+ * GET route: Will return all bookmarks from bookmark table
  */
  router.get('/', (req, res) => {
-    const query = `SELECT "bookmark".id, "product".image_url, "product".name, "product".price, "product".description			
+    const query = `SELECT "bookmark".id, "bookmark".product_id, "product".image_url, "product".name, "product".price, "product".description			
     FROM "product" JOIN "bookmark"
     ON "product".id = "bookmark".product_id
     JOIN "user" ON "bookmark".user_id = "user".id;`;
     pool.query(query)
     .then(dbResponse => {
-      console.log('--log-- router.get, successfully retrieved bookmarks:', dbResponse);
+      console.log('--log-- router.get, successfully returned bookmarks:', dbResponse);
       res.send(dbResponse.rows);
     })
     .catch(error => {
-      console.log('--ERROR-- router.get, unable to retrieve bookmarks:', error);
+      console.log('--ERROR-- router.get, unable to return bookmarks:', error);
       res.sendStatus(500);
     })
   });
+
+
+  /**
+ * GET route: Will return only a single bookmark from bookmark table
+ */
+ router.get('/detail/:id', (req, res) => {
+   const productId = req.params.id;
+   console.log('--LOG-- router.get, req.params.id is:', productId);
+  const query = `SELECT "bookmark".id, "bookmark".product_id, "product".image_url,
+  "product".name, "product".price, "product".description			
+  FROM "product" JOIN "bookmark"
+  ON "product".id = "bookmark".product_id
+  JOIN "user" ON "bookmark".user_id = "user".id
+  WHERE "bookmark".product_id = $1;`;
+  pool.query(query, [productId])
+  .then(dbResponse => {
+    console.log('--log-- router.get detail/:id, successfully returned single bookmark:', dbResponse.rows);
+    res.send(dbResponse.rows);
+  })
+  .catch(error => {
+    console.log('--ERROR-- router.get, detail/:id unable to return single bookmarks:', error);
+    res.sendStatus(500);
+  })
+});
 
 module.exports = router;
 
 
 //back up as I change query
 // /**
-//  * GET route: Will retrieve bookmarks from bookmark table
+//  * GET route: Will return bookmarks from bookmark table
 //  */
 //  router.get('/', (req, res) => {
 //   const query = `SELECT * FROM "bookmark";`;
 //   pool.query(query)
 //   .then(dbResponse => {
-//     console.log('--log-- router.get, successfully retrieved bookmarks:', dbResponse);
+//     console.log('--log-- router.get, successfully returned bookmarks:', dbResponse);
 //     res.send(dbResponse.rows);
 //   })
 //   .catch(error => {
-//     console.log('--ERROR-- router.get, unable to retrieve bookmarks:', error);
+//     console.log('--ERROR-- router.get, unable to return bookmarks:', error);
 //     res.sendStatus(500);
 //   })
 // });

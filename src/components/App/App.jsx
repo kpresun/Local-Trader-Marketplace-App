@@ -25,6 +25,7 @@ import Marketplace from '../../MarketPlaceView/MarketPlaceView';
 import UserProfile from '../UserProfile/UserProfile';
 import ActivityView from '../ActivityView/ActivityView';
 import BookmarkView from '../BookmarkView/BookmarkView';
+import BookmarkDetailView from '../BookmarkDetailView/BookmarkDetailView';
 
 function App() {
   const dispatch = useDispatch();
@@ -76,6 +77,10 @@ function App() {
 
           <ProtectedRoute exact path="/bookmark">
             <BookmarkView />
+          </ProtectedRoute>
+
+          <ProtectedRoute exact path="/bookmark/detail/:id" >
+            <BookmarkDetailView />
           </ProtectedRoute>
 
           {/* When a value is supplied for the authRedirect prop the user will

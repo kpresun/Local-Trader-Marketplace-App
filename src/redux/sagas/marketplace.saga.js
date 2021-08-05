@@ -9,7 +9,7 @@ function* getProducts(action) {
     console.log('Inside Get Products, the response data is:', products.data);
     yield put({ type: 'SET_PRODUCTS', payload: products.data});
   } catch (error) {
-    console.log('--ERROR-- cannot retrieve products:', error);
+    console.log('--ERROR-- cannot return products:', error);
   }
 }
 
