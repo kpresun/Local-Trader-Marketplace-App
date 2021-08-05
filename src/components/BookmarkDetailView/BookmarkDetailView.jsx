@@ -4,13 +4,14 @@ import { useDispatch, useSelector } from 'react-redux';
 
 function BookmarkDetailView() {
 
-    // const dispatch = useDispatch();
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch({ type: 'SET_SINGLE_BOOKMARK'});
+    }, []);
+
     const singleBookmark = useSelector(store => store.allBookmarkReducers.singleBookmarkReducer);
     console.log('--LOG-- singleBookmark is:', singleBookmark);
-
-    // useEffect(() => {
-    //     // dispatch({ type: 'FETCH_SINGLE_BOOKMARK'});
-    // }, []);
 
     return(
         <section>
