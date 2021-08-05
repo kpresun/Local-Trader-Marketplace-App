@@ -59,7 +59,7 @@ router.post('/', (req, res) => {
   pool.query(query, [productId])
   .then(dbResponse => {
     console.log('--log-- router.get detail/:id, successfully returned single bookmark:', dbResponse.rows);
-    res.send(dbResponse.rows);
+    res.send(dbResponse.rows[0]);
   })
   .catch(error => {
     console.log('--ERROR-- router.get, detail/:id unable to return single bookmarks:', error);

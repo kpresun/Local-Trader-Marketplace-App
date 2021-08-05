@@ -21,10 +21,10 @@ function* getBookmark() {
     }
 }
 
-function* getOneBookmark(action) {
+function* getOneBookmark(id) {
     try {
-        const singleBookmark = yield axios.get(`api/bookmark/detail/${action.payload}`);
-        console.log('---------What is the action from axios.get?------------', action.payload);
+        const singleBookmark = yield axios.get(`api/bookmark/detail/${id.payload.productId}`);
+        console.log('---------What is the action from axios.get?------------', id.payload);
         yield put({ type: 'SET_SINGLE_BOOKMARK', payload: singleBookmark.data});
         console.log('--LOG-- axios.get, id.payload is:', singleBookmark.data);
     } catch (error) {
@@ -32,10 +32,15 @@ function* getOneBookmark(action) {
     }
 }
 
+function* deleteBookmark(id) {
+    console.log('working');
+}
+
 function* bookmarkSaga() {
     yield takeLatest('ADD_TO_BOOKMARK', setBookmark);
     yield takeLatest('FETCH_BOOKMARK', getBookmark);
-    yield takeLatest('FETCH_SINGLE_BOOKMARK', getOneBookmark)
+    yield takeLatest('FETCH_SINGLE_BOOKMARK', getOneBookmark);
+    yield takeLatest('DELETE_BOOKMARK', deleteBookmark);
 }
 
 export default bookmarkSaga;
