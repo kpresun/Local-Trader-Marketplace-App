@@ -9,8 +9,7 @@ function Marketplace() {
     const history = useHistory();
     const dispatch = useDispatch();
     const allProducts = useSelector(store => store.productReducer);
-    const userBookmark = useSelector(store => store.bookmarkReducer);
-    const currentUser = useSelector(store => store.user);
+    // const userBookmark = useSelector(store => store.bookmarkReducer);
 
     useEffect(() => {
         dispatch({ type: 'FETCH_PRODUCTS'});
@@ -28,7 +27,7 @@ function Marketplace() {
     }
 
     const contactSeller = (userId) => {
-        console.log('--LOG-- the currentUser is:', currentUser);
+        console.log('--LOG-- the seller ID is:', userId );
         history.push(`/user/detail/${userId}`);
     }
 
@@ -45,7 +44,7 @@ function Marketplace() {
                             <h4>Description: {product.description}</h4>
                             <h4>user id is:{product.user_id}</h4>
                             <h4>product id is: {product.id}</h4>
-                            <button onClick={() =>{contactSeller(currentUser.id)}}>Contact</button>
+                            <button onClick={() =>{contactSeller(product.user_id)}}>Contact</button>
                             <button onClick={() => {bookmarkClick(product)}}>Bookmark</button>
                         </div>
                     )

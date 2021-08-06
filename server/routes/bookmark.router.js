@@ -50,7 +50,7 @@ router.post('/', (req, res) => {
  router.get('/detail/:id', (req, res) => {
    const productId = req.params.id;
    console.log('--LOG-- router.get, req.params.id is:', productId);
-  const query = `SELECT "bookmark".id, "bookmark".product_id, "product".image_url,
+  const query = `SELECT "bookmark".id, "bookmark".user_id, "bookmark".product_id, "product".image_url,
   "product".name, "product".price, "product".description			
   FROM "product" JOIN "bookmark"
   ON "product".id = "bookmark".product_id
