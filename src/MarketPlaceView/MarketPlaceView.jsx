@@ -2,7 +2,7 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import StarIcon from '@material-ui/icons/Star';
+// import StarIcon from '@material-ui/icons/Star';
 
 function Marketplace() {
 
@@ -17,9 +17,8 @@ function Marketplace() {
         // dispatch({ type: 'FETCH_BOOKMARKS'}) maybe for the conditional rendering
     }, []);
 
-    // handles adding item to bookmark
+    // handles adding and deleting item to bookmark: STILL NEED TO CREATE DELETE ROUTE
     const bookmarkClick = (product) => {
-        // const thisProductId = userBookmark.data.id;
         if (product) {
             dispatch({ type: 'ADD_TO_BOOKMARK', payload: product})
         } else {
@@ -28,8 +27,9 @@ function Marketplace() {
         // history.push("/bookmark"); testing only!
     }
 
-    const whoIsUser = () => {
-        console.log(currentUser);
+    const contactSeller = (userId) => {
+        console.log('--LOG-- the currentUser is:', currentUser);
+        history.push(`/user/detail/${userId}`);
     }
 
     return(
@@ -45,7 +45,7 @@ function Marketplace() {
                             <h4>Description: {product.description}</h4>
                             <h4>user id is:{product.user_id}</h4>
                             <h4>product id is: {product.id}</h4>
-                            <button onClick={whoIsUser}>Contact</button>
+                            <button onClick={() =>{contactSeller(currentUser.id)}}>Contact</button>
                             <button onClick={() => {bookmarkClick(product)}}>Bookmark</button>
                         </div>
                     )

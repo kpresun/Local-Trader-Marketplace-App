@@ -26,6 +26,7 @@ import UserProfile from '../UserProfile/UserProfile';
 import ActivityView from '../ActivityView/ActivityView';
 import BookmarkView from '../BookmarkView/BookmarkView';
 import BookmarkDetailView from '../BookmarkDetailView/BookmarkDetailView';
+import SellerInfoView from '../SellerInfoView/SellerInfoView';
 
 function App() {
   const dispatch = useDispatch();
@@ -81,6 +82,10 @@ function App() {
 
           <ProtectedRoute exact path="/bookmark/detail/:id" >
             <BookmarkDetailView />
+          </ProtectedRoute>
+
+          <ProtectedRoute exact path="/user/detail/:id" >
+            <SellerInfoView />
           </ProtectedRoute>
 
           {/* When a value is supplied for the authRedirect prop the user will
