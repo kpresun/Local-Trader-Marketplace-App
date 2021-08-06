@@ -67,6 +67,24 @@ router.post('/', (req, res) => {
   })
 });
 
+
+/**
+ * Router Delete: uses the targeted ID to locate and delete bookmarked item. 
+ */
+router.delete('/:id', (req, res) => {
+  const deleteId = req.params.id;
+  console.log('--LOG-- Inside router.delete, deleteId is:', deleteId );
+  const query = `DELETE FROM "bookmark" WHERE "id" = $1;`;
+  pool.query(query, [deleteId])
+  .then( dbResponse => {
+    res.sendStatus(200);
+  })
+  .catch( error => {
+    console.log('--ERROR-- Unable to delete ID from bookmark:', error);
+    res.sendStatus(500);
+  })
+});
+
 module.exports = router;
 
 

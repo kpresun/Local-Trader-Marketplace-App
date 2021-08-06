@@ -23,7 +23,6 @@ function BookmarkView() {
     const deleteBookmark = (deleteID) => {
         dispatch({ type: 'DELETE_BOOKMARK', payload: deleteID});
         console.log('--LOG-- ID to delete:', deleteID);
-
     }
 
     return(

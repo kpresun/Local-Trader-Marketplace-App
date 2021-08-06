@@ -5,6 +5,9 @@ const bookmarkReducer = (state = [], action) => {
         case 'SET_BOOKMARK':
             console.log('--Inside bookmarkReducer-- payload is:', action.payload);
             return action.payload;
+        case 'REFRESHED_BOOKMARK':
+            console.log('--DELETE inside bookmarkReducer--');
+            return [...state];
         default:
             return state;
     }

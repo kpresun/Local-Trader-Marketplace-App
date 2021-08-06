@@ -33,7 +33,12 @@ function* getOneBookmark(id) {
 }
 
 function* deleteBookmark(id) {
-    console.log('working');
+    console.log('--LOG-- item to delete is:', id.payload);
+    try { const idToDelete = yield axios.delete(`/api/bookmark/${id.payload}`);
+        yield put({ type: 'REFRESHED_BOOKMARK'});
+    } catch (error) {
+        console.log('--ERROR-- Unable to delete ID:', error);
+    }
 }
 
 function* bookmarkSaga() {

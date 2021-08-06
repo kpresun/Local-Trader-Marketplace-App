@@ -10,7 +10,7 @@ function Marketplace() {
     const dispatch = useDispatch();
     const allProducts = useSelector(store => store.productReducer);
     const userBookmark = useSelector(store => store.bookmarkReducer);
-    // const currentUser = useSelector(store => store.user);
+    const currentUser = useSelector(store => store.user);
 
     useEffect(() => {
         dispatch({ type: 'FETCH_PRODUCTS'});
@@ -28,6 +28,10 @@ function Marketplace() {
         // history.push("/bookmark"); testing only!
     }
 
+    const whoIsUser = () => {
+        console.log(currentUser);
+    }
+
     return(
         <section>
             <h1>This is the marketplace view</h1>
@@ -41,7 +45,7 @@ function Marketplace() {
                             <h4>Description: {product.description}</h4>
                             <h4>user id is:{product.user_id}</h4>
                             <h4>product id is: {product.id}</h4>
-                            <button>Contact</button>
+                            <button onClick={whoIsUser}>Contact</button>
                             <button onClick={() => {bookmarkClick(product)}}>Bookmark</button>
                         </div>
                     )

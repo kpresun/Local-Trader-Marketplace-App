@@ -30,6 +30,7 @@ function BookmarkDetailView() {
             <h3>Price: {singleBookmark.price} </h3>
             <h4>Description: {singleBookmark.description} </h4>
             <button>Contact Seller</button>
+            <button>Remove Bookmark</button>
         </section>
     )
 }
