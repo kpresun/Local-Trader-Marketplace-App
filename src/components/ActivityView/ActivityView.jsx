@@ -12,8 +12,7 @@ function ActivityView() {
     const newUser = useSelector(store => store.user);
 
   useEffect(() => {
-    dispatch({
-        type: 'FETCH_MY_ITEMS'});
+    dispatch({ type: 'FETCH_MY_ITEMS'});
   }, []);
 
     const goToBookmark = () => {
@@ -30,6 +29,7 @@ function ActivityView() {
                     return (
                         <div key = {item.id}>
                             <h1>{item.name}</h1>
+                            <p>{item.description}</p>
                         </div>
                     )
                 })}
