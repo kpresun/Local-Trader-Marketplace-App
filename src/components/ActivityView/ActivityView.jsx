@@ -1,27 +1,27 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 
 function ActivityView() {
 
     const dispatch = useDispatch();
     const history = useHistory();
     const mysellingitems = useSelector(store => store.activityReducer);
-    const thisUser = useSelector(store => store.user);
-  
+    console.log('--LOG-- my current selling items are:', mysellingitems);
+    
   useEffect(() => {
-    dispatch({ type: 'FETCH_MY_ITEMS', payload: thisUser.id});
-    console.log('--LOG-- the current user is', thisUser.id);
-  }, [])
+    dispatch({
+        type: 'FETCH_MY_ITEMS'});
+  }, []);
 
     const goToBookmark = () => {
         history.push("/bookmark");
     }
 
-
     return(
         <section>
             <p>This is the activity view</p>
+            <h1>{params.username}</h1>
             <button onClick={goToBookmark}>Bookmark</button>
             <article>
                 {mysellingitems.map(item => {
