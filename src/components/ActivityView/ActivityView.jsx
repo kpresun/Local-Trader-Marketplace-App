@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory, useParams } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 function ActivityView() {
 
@@ -8,7 +8,9 @@ function ActivityView() {
     const history = useHistory();
     const mysellingitems = useSelector(store => store.activityReducer);
     console.log('--LOG-- my current selling items are:', mysellingitems);
-    
+
+    const newUser = useSelector(store => store.user);
+
   useEffect(() => {
     dispatch({
         type: 'FETCH_MY_ITEMS'});
@@ -21,7 +23,7 @@ function ActivityView() {
     return(
         <section>
             <p>This is the activity view</p>
-            <h1>{params.username}</h1>
+            <h1>{newUser.id}</h1>
             <button onClick={goToBookmark}>Bookmark</button>
             <article>
                 {mysellingitems.map(item => {
