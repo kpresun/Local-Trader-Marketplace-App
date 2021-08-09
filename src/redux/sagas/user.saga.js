@@ -24,16 +24,8 @@ function* fetchUser() {
   }
 }
 
-function* fetchSeller() {
-  try {
-    const thisSeller = yield axios.get('/api/user');
-    
-  }
-}
-
 function* userSaga() {
   yield takeLatest('FETCH_USER', fetchUser);
-  yield takeLatest('FETCH_SELLER', fetchSeller);
 }
 
 export default userSaga;

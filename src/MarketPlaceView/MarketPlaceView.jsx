@@ -26,9 +26,9 @@ function Marketplace() {
         // history.push("/bookmark"); testing only!
     }
 
-    const contactSeller = (userId) => {
-        console.log('--LOG-- the seller ID is:', userId );
-        history.push(`/user/detail/${userId}`);
+    const contactSeller = (sellerId) => {
+        console.log('--LOG-- the seller ID is:', sellerId );
+        history.push(`/seller/detail/${sellerId}`);
     }
 
     return(

@@ -84,7 +84,7 @@ function App() {
             <BookmarkDetailView />
           </ProtectedRoute>
 
-          <ProtectedRoute exact path="/user/detail/:id" >
+          <ProtectedRoute exact path="/seller/detail/:id" >
             <SellerInfoView />
           </ProtectedRoute>
 
