@@ -27,6 +27,7 @@ import ActivityView from '../ActivityView/ActivityView';
 import BookmarkView from '../BookmarkView/BookmarkView';
 import BookmarkDetailView from '../BookmarkDetailView/BookmarkDetailView';
 import SellerInfoView from '../SellerInfoView/SellerInfoView';
+// import mySellingActivity from '../MySellingActivity/MySellingActivity';
 
 function App() {
   const dispatch = useDispatch();
@@ -42,13 +43,9 @@ function App() {
         <Switch>
           {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
           <Redirect exact from="/" to="/home" />
-
           {/* Visiting localhost:3000/about will show the about page. */}
-          <Route
-            // shows AboutPage at all times (logged in or not)
-            exact
-            path="/marketplace"
-          >
+          {/* shows marketplace at all times (logged in or not) */}
+          <Route exact path="/marketplace" > 
             <Marketplace />
           </Route>
 
@@ -56,19 +53,11 @@ function App() {
             Visiting localhost:3000/user will show the UserPage if the user is logged in.
             If the user is not logged in, the ProtectedRoute will show the LoginPage (component).
             Even though it seems like they are different pages, the user is always on localhost:3000/user */}
-          <ProtectedRoute
-            // logged in shows UserPage else shows LoginPage
-            exact
-            path="/myactivity"
-          >
+          <ProtectedRoute exact path="/activity/:id" >
             <ActivityView />
           </ProtectedRoute>
 
-          <ProtectedRoute
-            // logged in shows InfoPage else shows LoginPage
-            exact
-            path="/profilepage"
-          >
+          <ProtectedRoute exact path="/profile-page">
             <UserProfile />
           </ProtectedRoute>
 

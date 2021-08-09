@@ -3,7 +3,7 @@ import axios from 'axios';
 // import { response } from 'express'; NOT NEEDED, TYPE ERROR
 
 // starts on useEffect
-function* getProducts(action) {
+function* getProducts() {
   try {
     const products = yield axios.get('/api/product');
     console.log('Inside Get Products, the response data is:', products.data);

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 // import LogOutButton from '../LogOutButton/LogOutButton';
 import './Nav.css';
@@ -13,8 +13,8 @@ function Nav() {
   };
 
   if (user.id != null) {
-    loginLinkData.path = '/myactivity';
-    loginLinkData.text = 'Activty';
+    loginLinkData.path = `/activity/${user.id}`;
+    loginLinkData.text = 'Activity';
   }
 
   return (
@@ -33,7 +33,7 @@ function Nav() {
 
         {user.id && (
           <>
-            <Link className="navLink" to="/profilepage">
+            <Link className="navLink" to="/profile-page">
               Profile Page
             </Link>
             {/* <LogOutButton className="navLink" /> */}

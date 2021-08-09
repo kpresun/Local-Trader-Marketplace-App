@@ -4,6 +4,7 @@ import user from './user.reducer';
 import productReducer from './marketplace.reducer';
 import allBookmarkReducers from './bookmark.reducer';
 import sellerReducer from './seller.reducer';
+import activityReducer from './activity.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   productReducer, // contains all for sale products
   allBookmarkReducers,
   sellerReducer,
+  activityReducer,
 });
 
 export default rootReducer;
