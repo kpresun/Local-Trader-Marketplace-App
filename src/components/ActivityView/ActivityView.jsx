@@ -19,17 +19,26 @@ function ActivityView() {
         history.push("/bookmark");
     }
 
+    const itemDetailClick = (itemId) => {
+        history.push(`activity/detail/${itemId}`);
+        console.log('--LOG-- itemDetailClick, the id is:', itemId);
+    }
+
     return(
         <section>
-            <p>This is the activity view</p>
-            <h1>{newUser.id}</h1>
-            <button onClick={goToBookmark}>Bookmark</button>
+            <button onClick={goToBookmark}>My Bookmark</button>
+            <h1>My Listings</h1>
+            <button>Add New Listing</button>
             <article>
                 {mysellingitems.map(item => {
                     return (
                         <div key = {item.id}>
-                            <h1>{item.name}</h1>
-                            <p>{item.description}</p>
+                            <img src={item.image_url} height="200" onClick={() =>{itemDetailClick(item.id)}}/>
+                            <h2>{item.name}</h2>
+                            <h3>Price: ${item.price}</h3>
+                            <h4>Description: {item.description}</h4>
+                            <h4>user id is:{item.user_id}</h4>
+                            <h4>product id is: {item.id}</h4>
                         </div>
                     )
                 })}

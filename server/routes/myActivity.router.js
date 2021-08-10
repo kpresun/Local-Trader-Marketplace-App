@@ -13,7 +13,6 @@ router.get('/', rejectUnauthenticated, (req, res) => {
   const query = `SELECT * from "product" WHERE "product".user_id = $1;`
   pool.query(query, [thisUser])
   .then(dbResponse => {
-    console.log('---THIS IS DBRESPONSE--', dbResponse.rows);
       res.send(dbResponse.rows);
   })
   .catch(error => {

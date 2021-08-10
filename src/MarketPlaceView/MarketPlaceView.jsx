@@ -33,7 +33,7 @@ function Marketplace() {
 
     return(
         <section>
-            <h1>This is the marketplace view</h1>
+            <h1>Local Traders Marketplace</h1>
             <article>
                 {allProducts.map(product => {
                     return (
@@ -42,8 +42,8 @@ function Marketplace() {
                             <h2>{product.name}</h2>
                             <h3>Price: ${product.price}</h3>
                             <h4>Description: {product.description}</h4>
-                            <h4>user id is:{product.user_id}</h4>
-                            <h4>product id is: {product.id}</h4>
+                            <h4>Category: {product.category_type}</h4>
+                            <h4>Status: {product.status_type}</h4>
                             <button onClick={() =>{contactSeller(product.user_id)}}>Contact</button>
                             <button onClick={() => {bookmarkClick(product)}}>Bookmark</button>
                         </div>

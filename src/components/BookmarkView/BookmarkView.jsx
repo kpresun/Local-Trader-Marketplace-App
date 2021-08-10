@@ -25,19 +25,24 @@ function BookmarkView() {
         console.log('--LOG-- ID to delete:', deleteID);
     }
 
+    const goToMyListing = () => {
+        history.push('/activity');
+    }
+
     return(
         <section>
-            <h1>Bookmark to buy list</h1>
+            <button onClick={goToMyListing}>My Listings</button>
+            <h1>My Bookmarks</h1>
             <article>
                 {userBookmark.map(item => {
                     return (
                         <div key={item.id}>
                             <img src={item.image_url} height="200" onClick={() => {detailViewClick(item.product_id)}}/>
-                            <p>{item.product_id}</p>
-                            <p>The bookmark ID is: {item.id}</p>
                             <h2>{item.name}</h2>
                             <h3>Price: ${item.price}</h3>
                             <h4>Description: {item.description}</h4>
+                            <h4>Status: {item.status_type}</h4>
+                            <h4>Category: {item.category_type}</h4>
                             <button onClick={() => {deleteBookmark(item.id)}}>Remove Bookmark</button>
                         </div>
                     )

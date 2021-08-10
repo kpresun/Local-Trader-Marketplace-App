@@ -28,10 +28,12 @@ router.post('/', (req, res) => {
  * GET route: Will return all bookmarks from bookmark table
  */
  router.get('/', (req, res) => {
-    const query = `SELECT "bookmark".id, "bookmark".product_id, "product".image_url, "product".name, "product".price, "product".description			
+    const query = `SELECT "bookmark".id, "bookmark".user_id, "bookmark".product_id, "product".image_url, "product".name, "product".price, "product".description, "category".category_type, "status".status_type			
     FROM "product" JOIN "bookmark"
     ON "product".id = "bookmark".product_id
-    JOIN "user" ON "bookmark".user_id = "user".id;`;
+    JOIN "user" ON "bookmark".user_id = "user".id
+    JOIN "category" ON "category".id = "product".category_id
+    JOIN "status" ON "status".id = "product".status_id;`;
     pool.query(query)
     .then(dbResponse => {
       console.log('--log-- router.get, successfully returned bookmarks:', dbResponse);
@@ -50,11 +52,12 @@ router.post('/', (req, res) => {
  router.get('/detail/:id', (req, res) => {
    const productId = req.params.id;
    console.log('--LOG-- router.get, req.params.id is:', productId);
-  const query = `SELECT "bookmark".id, "bookmark".user_id, "bookmark".product_id, "product".image_url,
-  "product".name, "product".price, "product".description			
+  const query = `SELECT "bookmark".id, "bookmark".user_id, "bookmark".product_id, "product".image_url, "product".name, "product".price, "product".description, "category".category_type, "status".status_type			
   FROM "product" JOIN "bookmark"
   ON "product".id = "bookmark".product_id
   JOIN "user" ON "bookmark".user_id = "user".id
+  JOIN "category" ON "category".id = "product".category_id
+  JOIN "status" ON "status".id = "product".status_id
   WHERE "bookmark".product_id = $1;`;
   pool.query(query, [productId])
   .then(dbResponse => {
