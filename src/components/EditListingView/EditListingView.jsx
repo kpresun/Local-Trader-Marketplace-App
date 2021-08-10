@@ -69,7 +69,7 @@ function EditListingView() {
                 <select onChange={event => setCategory(event.target.value)}>
                     {categoryTypes.map(category => {
                         return (
-                            <option key={category.id} value={category}>{category.category_type}</option>
+                            <option key={category.id} value={category.id}>{category.category_type}</option>
                         )
                     })}
                 </select>

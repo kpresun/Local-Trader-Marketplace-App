@@ -16,6 +16,8 @@ function* updateItemDetail(action) {
     try {
         yield axios.put('/api/product/edit', action.payload);
         yield put({ type: 'SET_LISTING_ITEM', payload: action.data});
+    } catch (error) {
+        console.log('--ERROR-- unable to update item details:', error);
     }
         // action.payload.editingInfo.history.push(`/activity/detail/${action.payload.editingInfo.itemId}`);
 }
