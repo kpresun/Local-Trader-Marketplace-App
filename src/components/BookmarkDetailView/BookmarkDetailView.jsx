@@ -41,7 +41,7 @@ function BookmarkDetailView() {
     return(
         <section>
             <button onClick={goBackToBookMark}>Back</button>
-            <h1>This is detail view</h1>
+            <h1>Bookmark Detail</h1>
             <img src={singleBookmark.image_url} height="200"></img>
             <h2>{singleBookmark.name} </h2>
             <h4>Description: {singleBookmark.description} </h4>
