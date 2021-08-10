@@ -40,6 +40,16 @@ router.get('/:id', (req, res) => {
 })
 
 /**
+ * PUT route template
+ */
+ router.put('/', (req, res) => {
+  console.log('--LOG-- the req.body is:',req.body);
+  const editingQuery = `INSERT INTO "product" ("user_id", "status_id", "image_url","name", "price", "description", "created_date", "category_id")
+  VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
+  WHERE "product".id = $9;`;
+});
+
+/**
  * POST route template
  */
 router.post('/', (req, res) => {

@@ -11,8 +11,18 @@ function* getItemDetail(id) {
     }
 }
 
+function* updateItemDetail(action) {
+    console.log('--LOG-- Inside updateItemDetail');
+    try {
+        yield axios.put('/api/product/edit', action.payload);
+        yield put({ type: 'SET_LISTING_ITEM', payload: action.data});
+    }
+        // action.payload.editingInfo.history.push(`/activity/detail/${action.payload.editingInfo.itemId}`);
+}
+
 function* listingDetailSaga() {
     yield takeLatest('FETCH_ITEM_DETAIL', getItemDetail);
+    yield takeLatest('NEW_ITEM_DETAILS', updateItemDetail);
 }
 
 export default listingDetailSaga;
