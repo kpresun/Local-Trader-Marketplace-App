@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { generatePath, useHistory } from 'react-router-dom';
+import { generatePath, useHistory, useParams } from 'react-router-dom';
 
 function EditListingView() {
 
+    const params = useParams();
     const dispatch = useDispatch();
     const history = useHistory();
     const categoryTypes = useSelector(store => store.categoryReducer);
-    console.log('--LOG-- the category types are:', categoryTypes);
     const statusTypes = useSelector(store => store.statusReducer);
-    console.log('--LOG-- the category types are:', statusTypes);
+    const listingItemDetail = useSelector(store => store.listingDetailReducer);
+
 
     const [url, setUrl] = useState('');
     const [name, setName] = useState('');
@@ -19,11 +20,12 @@ function EditListingView() {
     const [category, setCategory] = useState('');
     const [status, setStatus] = useState('');
 
-  //    dispatch({ type: 'FETCH_ITEM_INFO'}); DO last
     useEffect(() => {
+        console.log('--LOG-- useEffect, the params.id is:', params.id );
        dispatch({ type: 'FETCH_CATEGORY_TYPE'}); 
        dispatch({ type: 'FETCH_STATUS_TYPE'});
-    }, []);
+       dispatch({ type: 'FETCH_ITEM_DETAIL', payload: {itemId: params.id}});
+    }, [params.id]);
 
 
     const backToActivity = () => {

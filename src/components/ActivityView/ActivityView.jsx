@@ -9,8 +9,6 @@ function ActivityView() {
     const mysellingitems = useSelector(store => store.activityReducer);
     console.log('--LOG-- my current selling items are:', mysellingitems);
 
-    const newUser = useSelector(store => store.user);
-
   useEffect(() => {
     dispatch({ type: 'FETCH_MY_ITEMS'});
   }, []);
