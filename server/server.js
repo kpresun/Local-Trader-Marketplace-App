@@ -13,6 +13,8 @@ const productRouter = require('./routes/product.router');
 const bookmarkRouter = require('./routes/bookmark.router');
 const sellerRouter = require('./routes/seller.router');
 const activityRouter = require('./routes/myActivity.router');
+const categoryRouter = require('./routes/category.router');
+const statusRouter = require('./routes/status.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -31,6 +33,8 @@ app.use('/api/product', productRouter);
 app.use('/api/bookmark', bookmarkRouter);
 app.use('/api/seller', sellerRouter);
 app.use('/api/activity', activityRouter);
+app.use('/api/category', categoryRouter);
+app.use('/api/status', statusRouter);
 
 // Serve static files
 app.use(express.static('build'));

@@ -6,6 +6,8 @@ import allBookmarkReducers from './bookmark.reducer';
 import sellerReducer from './seller.reducer';
 import activityReducer from './activity.reducer';
 import listingDetailReducer from './listingDetail.reducer';
+import categoryReducer from './category.reducer';
+import statusReducer from './status.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -21,6 +23,8 @@ const rootReducer = combineReducers({
   sellerReducer,
   activityReducer,
   listingDetailReducer,
+  categoryReducer,
+  statusReducer,
 });
 
 export default rootReducer;

@@ -27,7 +27,6 @@ function ListingDetail() {
             <button onClick={goToMyListings}>Back</button>
             <p>Your Listing Details</p>
             <img src={listingItemDetail.image_url} height="200"></img>
-            {/* <p>{listingItemDetail.id}</p> */}
             <h2>Name: {listingItemDetail.name} </h2>
             <h3>Price: {listingItemDetail.price} </h3>
             <h4>Description: {listingItemDetail.description} </h4>

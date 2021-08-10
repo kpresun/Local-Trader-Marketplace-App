@@ -1,10 +1,17 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { generatePath, useHistory } from 'react-router-dom';
 
 function EditListingView() {
 
+    const dispatch = useDispatch();
     const history = useHistory();
+    const categoryTypes = useSelector(store => store.categoryReducer);
+    console.log('--LOG-- the category types are:', categoryTypes);
+    const statusTypes = useSelector(store => store.statusReducer);
+    console.log('--LOG-- the category types are:', statusTypes);
+
     const [url, setUrl] = useState('');
     const [name, setName] = useState('');
     const [price, setPrice] = useState('');
@@ -12,11 +19,11 @@ function EditListingView() {
     const [category, setCategory] = useState('');
     const [status, setStatus] = useState('');
 
+  //    dispatch({ type: 'FETCH_ITEM_INFO'}); DO last
     useEffect(() => {
-       ({ type: 'FETCH_ITEM_INFO'}); 
-       ({ type: 'FETCH_CATEGORIES'}); 
-       ({ type: 'FETCH_STATUS_TYPE'});
-    })
+       dispatch({ type: 'FETCH_CATEGORY_TYPE'}); 
+       dispatch({ type: 'FETCH_STATUS_TYPE'});
+    }, []);
 
 
     const backToActivity = () => {
@@ -33,8 +40,20 @@ function EditListingView() {
                 <input type="text" placeholder="Name" value={name} onChange={event => setName(event.target.value)} />
                 <input type="text" placeholder="Price" value={price} onChange={event => setPrice(event.target.value)} />
                 <input type="text" placeholder="Description" value={description} onChange={event => setDescription(event.target.value)} />
-                <input type="text" placeholder="Category" value={category} onChange={event => setCategory(event.target.value)} />
-                <input type="text" placeholder="Status" value={status} onChange={event => setStatus(event.target.value)} />
+                <select onChange={event => setCategory(event.target.value)}>
+                    {categoryTypes.map(category => {
+                        return (
+                            <option key={category.id} value={category}>{category.category_type}</option>
+                        )
+                    })}
+                </select>
+                <select onChange={event => setStatus(event.target.value)}>
+                    {statusTypes.map(status => {
+                        return (
+                            <option key={status.id} value={status}>{status.status_type}</option>
+                        )
+                    })}
+                </select>
                 <button>Update Listing</button>
             </form>
         </section>
