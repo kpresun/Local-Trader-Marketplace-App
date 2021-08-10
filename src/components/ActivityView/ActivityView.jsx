@@ -35,10 +35,9 @@ function ActivityView() {
                         <div key = {item.id}>
                             <img src={item.image_url} height="200" onClick={() =>{itemDetailClick(item.id)}}/>
                             <h2>{item.name}</h2>
+                            <h5>Status: {item.status_type}</h5>
                             <h3>Price: ${item.price}</h3>
                             <h4>Description: {item.description}</h4>
-                            <h4>user id is:{item.user_id}</h4>
-                            <h4>product id is: {item.id}</h4>
                         </div>
                     )
                 })}

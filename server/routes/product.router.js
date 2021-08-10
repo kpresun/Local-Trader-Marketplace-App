@@ -24,7 +24,11 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res) => {
   const listingId = req.params.id;
   console.log('--LOG-- router.get for listing item, the id is:', listingId);
-  const query = `SELECT * from "product" WHERE "product".id = $1;`;
+  const query = `SELECT  "product".id, "product".user_id, "product".image_url, "product".name, "product".price, "product".description, "category".category_type, "status".status_type, "product".created_date
+  FROM "product" JOIN "category"
+  ON "product".category_id = "category".id
+  JOIN "status" ON "status".id = "product".status_id
+  WHERE "product".id = $1;`;
   pool.query(query, [listingId])
   .then(dbResponse => {
     res.send(dbResponse.rows[0]);
