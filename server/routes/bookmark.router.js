@@ -3,11 +3,12 @@ const pool = require('../modules/pool');
 const router = express.Router();
 
 /**
- * POST route template
+ * POST route: bookmarks item to bookmark table
  */
 router.post('/', (req, res) => {
   console.log('--log-- The req.body is:', req.body);
-  const userId = req.body.user_id
+  console.log('--LOG-- what is the current users id?', req.user.id);
+  const userId = req.user.id;
   const productId = req.body.id;
   console.log(req.user.id); // maybe req.user?
   const query = `INSERT INTO "bookmark" ("user_id", "product_id")
@@ -28,15 +29,15 @@ router.post('/', (req, res) => {
  * GET route: Will return all bookmarks from bookmark table
  */
  router.get('/user/:id', (req, res) => {
-    const userId = req.body.id;
-    console.log('what is userId?', userId);
+   userId = req.params.id;
+   console.log('--LOG-- the params.id is:', userId);
     const query = `SELECT "bookmark".id, "bookmark".user_id, "bookmark".product_id, "product".image_url, "product".name, "product".price, "product".description, "category".category_type, "status".status_type			
     FROM "product" JOIN "bookmark"
     ON "product".id = "bookmark".product_id
     JOIN "user" ON "bookmark".user_id = "user".id
     JOIN "category" ON "category".id = "product".category_id
-    JOIN "status" ON "status".id = "product".status_id;
-    WHERE "bookmark".user_id = $1`;
+    JOIN "status" ON "status".id = "product".status_id
+    WHERE "bookmark".user_id = $1;`;
     pool.query(query, [userId])
     .then(dbResponse => {
       console.log('--log-- router.get, successfully returned bookmarks:', dbResponse);
