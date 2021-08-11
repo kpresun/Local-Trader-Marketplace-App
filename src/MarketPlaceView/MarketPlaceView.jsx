@@ -23,7 +23,6 @@ function Marketplace() {
         } else {
             dispatch({ type: 'DELETE_FROM_BOOKMARK', payload: product})
         }
-        // history.push("/bookmark"); testing only!
     }
 
     const contactSeller = (sellerId) => {

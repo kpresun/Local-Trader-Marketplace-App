@@ -36,7 +36,7 @@ function BookmarkDetailView() {
     const deleteBookmark = (deleteID) => {
         dispatch({ type: 'DELETE_BOOKMARK', payload: deleteID});
         console.log('--LOG-- ID to delete:', deleteID);
-        history.push('/bookmark');
+        history.push(`/bookmark/user/${user.id}`);
     }
 
     return(

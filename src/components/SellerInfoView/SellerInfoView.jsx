@@ -7,6 +7,7 @@ function SellerInfoView() {
     const dispatch = useDispatch();
     const params = useParams();
     const history = useHistory();
+    const user = useSelector(store => store.user);
 
     useEffect(() => {
         console.log('--LOG-- SELLER INFO VIEW, the params.id is:', params.id);
@@ -22,7 +23,7 @@ function SellerInfoView() {
     console.log('--LOG-- thisSeller is:', thisSeller);
 
     const goToBookmark = () => {
-        history.push("/bookmark");
+        history.push(`/bookmark/user/${user.id}`);
     }
 
     return(
