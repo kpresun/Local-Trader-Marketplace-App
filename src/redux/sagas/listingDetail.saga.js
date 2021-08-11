@@ -24,9 +24,19 @@ function* updateItemDetail(action) {
         // action.payload.editingInfo.history.push(`/activity/detail/${action.payload.editingInfo.itemId}`);
 }
 
+function* deleteListing(id) {
+    try {
+        yield axios.delete(`api/product${id.payload}`);
+        console.log('What is the id?', id);
+    } catch (error) {
+        console.log('--ERROR-- deleteListing axios.delete, unable to delete item:', error);
+    }
+}
+
 function* listingDetailSaga() {
     yield takeLatest('FETCH_ITEM_DETAIL', getItemDetail);
     yield takeLatest('NEW_ITEM_DETAILS', updateItemDetail);
+    yield takeLatest('DELETE_LISTING', deleteListing);
 }
 
 export default listingDetailSaga;

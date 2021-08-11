@@ -85,4 +85,18 @@ router.post('/', (req, res) => {
   })
 });
 
+router.delete('/:id', (req, res) => {
+  const deleteId = req.params.id;
+  console.log('what is req.params.id?', deleteId);
+  const deleteQuery = `DELETE FROM "product" WHERE "id" = $1;`
+  pool.query(deleteQuery, [deleteId])
+  .then(dbResponse => {
+    res.sendStatus(200);
+  })
+  .catch(error => {
+    console.log('--ERROR-- router.delete, unable to delete listing:', error);
+    res.sendStatus(500);
+  })
+});
+
 module.exports = router;
