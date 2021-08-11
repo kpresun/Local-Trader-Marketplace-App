@@ -14,8 +14,10 @@ function* getItemDetail(id) {
 function* updateItemDetail(action) {
     console.log('--LOG-- Inside updateItemDetail');
     try {
-        yield axios.put('/api/product/edit', action.payload);
-        yield put({ type: 'SET_LISTING_ITEM', payload: action.data});
+        const editData = yield axios.put('/api/product/edit', action.payload);
+        // yield put({ type: 'FETCH_ITEM_DETAIL'});
+        console.log('--PUSHING FROM SAGA--');
+        action.payload.history.push(`/activity/detail/${action.payload.id}`);
     } catch (error) {
         console.log('--ERROR-- unable to update item details:', error);
     }

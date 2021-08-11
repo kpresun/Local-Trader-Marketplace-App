@@ -12,6 +12,7 @@ function EditListingView() {
     const statusTypes = useSelector(store => store.statusReducer);
     const listingItemDetail = useSelector(store => store.listingDetailReducer);
 
+    const [itemId, setItemId] = useState('');
     const [url, setUrl] = useState('');
     const [name, setName] = useState('');
     const [price, setPrice] = useState('');
@@ -28,6 +29,7 @@ function EditListingView() {
     }, [params.id]);
 
     const setAllFields = () => {
+        setItemId(listingItemDetail.id);
         setUrl(listingItemDetail.image_url);
         setName(listingItemDetail.name);
         setPrice(listingItemDetail.price);
@@ -41,19 +43,22 @@ function EditListingView() {
         // edit this when we have the item id
     }
 
-    const editItemDetails = () => {
+    const editItemDetails = (event) => {
+        event.preventDefault();
         const editingInfo = {
+            id: itemId,
             image_url: url,
             name: name,
             price: price,
             description: description,
             category_type: category,
             status_type: status,
-            // history: history, will try to at least update info first then push in saga
+            history: history
+            // will try to at least update info first then push in saga
             // itemId: params.id
         }
         dispatch({ type: 'NEW_ITEM_DETAILS', payload: editingInfo});
-        backToActivity(params.id);
+        // backToActivity(params.id);
         //might push and fetch before info is updated
     }
 

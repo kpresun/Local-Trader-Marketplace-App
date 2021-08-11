@@ -42,17 +42,21 @@ router.get('/:id', (req, res) => {
 /**
  * PUT route: Update listing item info
  */
- router.put('/', (req, res) => {
+ router.put('/edit', (req, res) => {
   console.log('--LOG-- the req.body is:',req.body);
-  itemId = req.params.id;
   item = req.body;
-  const editingQuery = `INSERT INTO "product" (
-    ""status_id", "image_url","name","price", "description", "category_id")
-  VALUES ($1, $2, $3, $4, $5, $6)
+  const editingQuery = `UPDATE "product"
+  SET "status_id" = $1,
+  "image_url" = $2,
+  "name" = $3,
+  "price" = $4,
+  "description" = $5,
+  "category_id" = $6,
   WHERE "product".id = $7;`;
-  pool.query(editingQuery [item.status_id, item.image_url, item.name, item.price, item.description, item.category_id, itemId])
+  pool.query(editingQuery [item.status_id, item.image_url, item.name, item.price, item.description, item.category_id, item.id])
   .then(dbResponse => {
-    res.send(dbResponse.rows[0]);
+    // res.send(dbResponse.data);
+    res.sendStatus(200);
   })
   .catch(error => {
     console.log('Unable to return updated item info:', error);

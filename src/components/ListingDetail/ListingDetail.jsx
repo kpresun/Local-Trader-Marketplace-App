@@ -12,6 +12,7 @@ function ListingDetail() {
     useEffect(() => {
         dispatch({ type: 'FETCH_ITEM_DETAIL', payload: {itemId: params.id} });
     }, [params.id]);
+    // try again wtihout useEffect  - Chris
 
     const goToMyListings = () => {
         history.push("/activity");
