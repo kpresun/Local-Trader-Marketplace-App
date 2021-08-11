@@ -27,7 +27,7 @@ router.post('/', (req, res) => {
 /**
  * GET route: Will return all bookmarks from bookmark table
  */
- router.get('/', (req, res) => {
+ router.get('user/:id', (req, res) => {
     const query = `SELECT "bookmark".id, "bookmark".user_id, "bookmark".product_id, "product".image_url, "product".name, "product".price, "product".description, "category".category_type, "status".status_type			
     FROM "product" JOIN "bookmark"
     ON "product".id = "bookmark".product_id

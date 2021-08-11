@@ -67,7 +67,7 @@ function App() {
             <Marketplace />
           </ProtectedRoute>
 
-          <ProtectedRoute exact path="/bookmark">
+          <ProtectedRoute exact path="/bookmark/user/:id">
             <BookmarkView />
           </ProtectedRoute>
 

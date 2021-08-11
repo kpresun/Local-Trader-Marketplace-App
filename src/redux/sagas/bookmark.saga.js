@@ -11,9 +11,9 @@ function* setBookmark(bookmark) {
     }
 }
 
-function* getBookmark() {
+function* getBookmark(userId) {
     try {
-        const userBookmark = yield axios.get('/api/bookmark');
+        const userBookmark = yield axios.get(`/api/bookmark/user/${userId}`);
         yield put({ type: 'SET_BOOKMARK', payload: userBookmark.data});
         console.log('--LOG-- axios.get, userBookmark.payload is:', userBookmark.data);
     } catch (error) {

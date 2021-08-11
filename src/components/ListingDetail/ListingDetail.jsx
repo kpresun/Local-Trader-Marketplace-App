@@ -25,7 +25,8 @@ function ListingDetail() {
 
     const deleteListing = (itemId) => {
         window.confirm('Are you sure you want to delete this listing?') &&
-        dispatch({ type: 'DELETE_LISTING', payload: itemId });
+        dispatch({ type: 'DELETE_LISTING', payload: [itemId, history] });
+        // history.push('/activity');
         // const proceed = confirm('Are you sure you want to delete this listing?');
         // if (proceed) {
         //     console.log('WE DISPATCH HERE');

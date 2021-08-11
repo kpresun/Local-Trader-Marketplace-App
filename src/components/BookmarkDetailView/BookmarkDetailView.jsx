@@ -9,6 +9,7 @@ function BookmarkDetailView() {
     const dispatch = useDispatch();
     const params = useParams();
     const history = useHistory();
+    const user = useSelector(store => store.user);
 
     useEffect(() => {
         console.log('--LOG-- The params.id is:', params.id);
@@ -24,7 +25,7 @@ function BookmarkDetailView() {
     console.log('--LOG-- singleBookmark is:', singleBookmark);
 
     const goBackToBookMark = () => {
-        history.push("/bookmark");
+        history.push(`/bookmark/user/${user.id}`);
     }
 
     const contactSeller = (sellerId) => {

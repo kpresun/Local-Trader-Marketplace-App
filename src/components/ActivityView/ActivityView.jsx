@@ -14,7 +14,7 @@ function ActivityView() {
   }, []);
 
     const goToBookmark = () => {
-        history.push("/bookmark");
+        history.push("/bookmark/user/");
     }
 
     const itemDetailClick = (itemId) => {

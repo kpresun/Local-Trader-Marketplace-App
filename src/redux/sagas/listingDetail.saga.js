@@ -26,8 +26,9 @@ function* updateItemDetail(action) {
 
 function* deleteListing(id) {
     try {
-        yield axios.delete(`api/product${id.payload}`);
+        yield axios.delete(`api/product/${id.payload[0]}`);
         console.log('What is the id?', id);
+        id.payload[1].push('/activity');
     } catch (error) {
         console.log('--ERROR-- deleteListing axios.delete, unable to delete item:', error);
     }
