@@ -22,11 +22,16 @@ function ActivityView() {
         console.log('--LOG-- itemDetailClick, the id is:', itemId);
     }
 
+    const addNewListing = () => {
+        history.push('/activity/listing');
+        console.log('pushing into addingnewlisting');
+    }
+
     return(
         <section>
             <button onClick={goToBookmark}>My Bookmark</button>
             <h1>My Listings</h1>
-            <button>Add New Listing</button>
+            <button onClick={addNewListing}>Add New Listing</button>
             <article>
                 {mysellingitems.map(item => {
                     return (

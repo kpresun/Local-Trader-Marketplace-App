@@ -51,9 +51,9 @@ router.get('/:id', (req, res) => {
   "name" = $3,
   "price" = $4,
   "description" = $5,
-  "category_id" = $6,
+  "category_id" = $6
   WHERE "product".id = $7;`;
-  pool.query(editingQuery [item.status_id, item.image_url, item.name, item.price, item.description, item.category_id, item.id])
+  pool.query(editingQuery, [item.status_id, item.image_url, item.name, item.price, item.description, item.category_id, item.id])
   .then(dbResponse => {
     // res.send(dbResponse.data);
     res.sendStatus(200);

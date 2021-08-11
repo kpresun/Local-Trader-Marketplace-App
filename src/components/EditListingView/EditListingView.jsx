@@ -51,8 +51,8 @@ function EditListingView() {
             name: name,
             price: price,
             description: description,
-            category_type: category,
-            status_type: status,
+            category_id: category,
+            status_id: status,
             history: history
             // will try to at least update info first then push in saga
             // itemId: params.id
@@ -67,6 +67,7 @@ function EditListingView() {
             <button onClick={() => {{backToActivity(listingItemDetail.id)}}}>Back</button>
             <h1>Edit Mode</h1>
             <form onSubmit={editItemDetails}>
+                <img src={listingItemDetail.image_url} height="200" />
                 <input type="text" placeholder="Image Url" value={url} onChange={event => setUrl(event.target.value)} />
                 <input type="text" placeholder="Name" value={name} onChange={event => setName(event.target.value)} />
                 <input type="text" placeholder="Price" value={price} onChange={event => setPrice(event.target.value)} />
