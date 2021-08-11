@@ -23,7 +23,7 @@ function SellerInfoView() {
     console.log('--LOG-- thisSeller is:', thisSeller);
 
     const goToBookmark = () => {
-        history.push(`/bookmark/user/${user.id}`);
+        history.push('/marketplace');
     }
 
     return(
