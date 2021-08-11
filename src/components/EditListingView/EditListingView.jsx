@@ -54,12 +54,8 @@ function EditListingView() {
             category_id: category,
             status_id: status,
             history: history
-            // will try to at least update info first then push in saga
-            // itemId: params.id
         }
         dispatch({ type: 'NEW_ITEM_DETAILS', payload: editingInfo});
-        // backToActivity(params.id);
-        //might push and fetch before info is updated
     }
 
     return (

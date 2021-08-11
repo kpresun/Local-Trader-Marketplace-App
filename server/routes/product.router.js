@@ -68,7 +68,21 @@ router.get('/:id', (req, res) => {
  * POST route template
  */
 router.post('/', (req, res) => {
-  // POST route code here
+  console.log('The req.body for posting is:', req.body);
+  item = req.body;
+  const newItemQuery = `INSERT INTO "product" (
+    "user_id", "status_id", "image_url","name", "price",
+     "description", "created_date", "category_id")
+  VALUES ($1, $2, $3, $4, $5, $6, current_timestamp, $7 );`
+  pool.query(newItemQuery, [item.user_id, item.status_id, item.image_url,
+    item.name, item.price, item.description, item.category_id])
+  .then(dbResponse => {
+    res.sendStatus(200);
+  })
+  .catch(error => {
+    console.log('-ERROR-- unable to post new item:', error);
+    res.sendStatus(500);
+  })
 });
 
 module.exports = router;
