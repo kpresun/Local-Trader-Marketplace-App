@@ -27,14 +27,17 @@ router.post('/', (req, res) => {
 /**
  * GET route: Will return all bookmarks from bookmark table
  */
- router.get('user/:id', (req, res) => {
+ router.get('/user/:id', (req, res) => {
+    const userId = req.body.id;
+    console.log('what is userId?', userId);
     const query = `SELECT "bookmark".id, "bookmark".user_id, "bookmark".product_id, "product".image_url, "product".name, "product".price, "product".description, "category".category_type, "status".status_type			
     FROM "product" JOIN "bookmark"
     ON "product".id = "bookmark".product_id
     JOIN "user" ON "bookmark".user_id = "user".id
     JOIN "category" ON "category".id = "product".category_id
-    JOIN "status" ON "status".id = "product".status_id;`;
-    pool.query(query)
+    JOIN "status" ON "status".id = "product".status_id;
+    WHERE "bookmark".user_id = $1`;
+    pool.query(query, [userId])
     .then(dbResponse => {
       console.log('--log-- router.get, successfully returned bookmarks:', dbResponse);
       res.send(dbResponse.rows);
@@ -89,21 +92,3 @@ router.delete('/:id', (req, res) => {
 });
 
 module.exports = router;
-
-
-//back up as I change query
-// /**
-//  * GET route: Will return bookmarks from bookmark table
-//  */
-//  router.get('/', (req, res) => {
-//   const query = `SELECT * FROM "bookmark";`;
-//   pool.query(query)
-//   .then(dbResponse => {
-//     console.log('--log-- router.get, successfully returned bookmarks:', dbResponse);
-//     res.send(dbResponse.rows);
-//   })
-//   .catch(error => {
-//     console.log('--ERROR-- router.get, unable to return bookmarks:', error);
-//     res.sendStatus(500);
-//   })
-// });

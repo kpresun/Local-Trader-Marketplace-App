@@ -13,7 +13,8 @@ function* setBookmark(bookmark) {
 
 function* getBookmark(userId) {
     try {
-        const userBookmark = yield axios.get(`/api/bookmark/user/${userId}`);
+        console.log('what is the userID?', userId);
+        const userBookmark = yield axios.get(`/api/bookmark/user/${userId.payload}`);
         yield put({ type: 'SET_BOOKMARK', payload: userBookmark.data});
         console.log('--LOG-- axios.get, userBookmark.payload is:', userBookmark.data);
     } catch (error) {

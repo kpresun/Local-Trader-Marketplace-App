@@ -7,11 +7,12 @@ function BookmarkView() {
 
     const history = useHistory();
     const dispatch = useDispatch();
+    const user = useSelector(store => store.user);
     const userBookmark = useSelector(store => store.allBookmarkReducers.bookmarkReducer);
     console.log('--LOG-- userBookmark is:', userBookmark);
 
     useEffect(() => {
-        dispatch({ type: 'FETCH_BOOKMARK'});
+        dispatch({ type: 'FETCH_BOOKMARK', payload: user.id });
     }, []);
 
     const detailViewClick = (productId) => {

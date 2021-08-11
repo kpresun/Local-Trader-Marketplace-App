@@ -6,6 +6,7 @@ function ActivityView() {
 
     const dispatch = useDispatch();
     const history = useHistory();
+    const user = useSelector(store => store.user);
     const mysellingitems = useSelector(store => store.activityReducer);
     console.log('--LOG-- my current selling items are:', mysellingitems);
 
@@ -14,7 +15,7 @@ function ActivityView() {
   }, []);
 
     const goToBookmark = () => {
-        history.push("/bookmark/user/");
+        history.push(`/bookmark/user/${user.id}`);
     }
 
     const itemDetailClick = (itemId) => {

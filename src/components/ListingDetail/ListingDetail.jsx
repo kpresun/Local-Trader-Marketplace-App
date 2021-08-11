@@ -15,7 +15,7 @@ function ListingDetail() {
     // try again wtihout useEffect  - Chris
 
     const goToMyListings = () => {
-        history.push("/activity");
+        history.push('/activity');
     }
 
     const goToEditView = (itemId) => {
@@ -26,14 +26,6 @@ function ListingDetail() {
     const deleteListing = (itemId) => {
         window.confirm('Are you sure you want to delete this listing?') &&
         dispatch({ type: 'DELETE_LISTING', payload: [itemId, history] });
-        // history.push('/activity');
-        // const proceed = confirm('Are you sure you want to delete this listing?');
-        // if (proceed) {
-        //     console.log('WE DISPATCH HERE');
-        // } else {
-        //     console.log('we push back to the current page?');
-        // }
-        // alert(proceed);
     }
 
     return(
