@@ -15,6 +15,9 @@ import { makeStyles } from '@material-ui/core';
 import { Container } from '@material-ui/core';
 import { Grid } from '@material-ui/core';
 import { TextField } from '@material-ui/core';
+import { Select } from '@material-ui/core';
+import { FormControl } from '@material-ui/core';
+import { InputLabel } from '@material-ui/core';
 
 function EditListingView() {
 
@@ -96,32 +99,44 @@ function EditListingView() {
     }
 
     return (
-        <Container>
+        <Container className={classes.container}>
             <Button variant="outlined" color="primary" onClick={() => {{backToActivity(listingItemDetail.id)}}}>Back</Button>
-            <Typography>Edit Mode</Typography>
-            <form onSubmit={editItemDetails}>
-                <CardMedia className={classes.media} image={listingItemDetail.image_url} height="200" />
-                <TextField id="filled-basic" label="Image Url" variant="filled" type="text" placeholder="Image Url" value={url} onChange={event => setUrl(event.target.value)} />
-                <TextField id="filled-basic" label="Name" variant="filled" type="text" placeholder="Name" value={name} onChange={event => setName(event.target.value)} />
-                <TextField id="filled-basic" label="Price" variant="filled" type="text" placeholder="Price" value={price} onChange={event => setPrice(event.target.value)} />
-                <TextField id="filled-basic" label="Description" variant="filled" type="text" placeholder="Description" value={description} onChange={event => setDescription(event.target.value)} />
-                <select onChange={event => setCategory(event.target.value)}>
-                    {categoryTypes.map(category => {
-                        return (
-                            <option key={category.id} value={category.id}>{category.category_type}</option>
-                        )
-                    })}
-                </select>
-                <select onChange={event => setStatus(event.target.value)}>
-                    {statusTypes.map(status => {
-                        return (
-                            <option key={status.id} value={status.id}>{status.status_type}</option>
-                        )
-                    })}
-                </select>
-                <Button size="small" color="primary" type="submit" >Update Listing</Button>
-                <Button size="small" color="primary" onClick={() => {{backToActivity(listingItemDetail.id)}}}>Cancel</Button>
-            </form>
+            <Typography className={classes.Header} variant="body" color="textPrimary" component="h1">Edit Listing</Typography>
+            <Grid container justifyContent="center" alignItems="center" direction="column">
+                <Grid item item xs={12} className={classes.cardGrid}>
+                    <Card className={classes.root}>
+                        <FormControl onSubmit={editItemDetails}>
+                            <CardMedia className={classes.media} image={listingItemDetail.image_url} />
+                            <CardActionArea>
+                                <CardContent>
+                                    <TextField id="filled-basic" label="Image Url" variant="filled" type="text" placeholder="Image Url" value={url} onChange={event => setUrl(event.target.value)} />
+                                    <TextField id="filled-basic" label="Name" variant="filled" type="text" placeholder="Name" value={name} onChange={event => setName(event.target.value)} />
+                                    <TextField id="filled-basic" label="Price" variant="filled" type="text" placeholder="Price" value={price} onChange={event => setPrice(event.target.value)} />
+                                    <TextField id="filled-basic" label="Description" variant="filled" type="text" placeholder="Description" value={description} onChange={event => setDescription(event.target.value)} />
+                                </CardContent>
+                            </CardActionArea>
+                            <Select onChange={event => setCategory(event.target.value)}>
+                                {categoryTypes.map(category => {
+                                    return (
+                                        <option key={category.id} value={category.id}>{category.category_type}</option>
+                                    )
+                                })}
+                            </Select>
+                            <Select onChange={event => setStatus(event.target.value)}>
+                                {statusTypes.map(status => {
+                                    return (
+                                        <option key={status.id} value={status.id}>{status.status_type}</option>
+                                    )
+                                })}
+                            </Select>
+                            <CardActions>
+                                <Button size="small" color="primary" type="submit" >Update Listing</Button>
+                                <Button size="small" color="primary" onClick={() => {{backToActivity(listingItemDetail.id)}}}>Cancel</Button>
+                            </CardActions>
+                        </FormControl>
+                    </Card>
+                </Grid>
+            </Grid>
         </Container>
     )
 }
