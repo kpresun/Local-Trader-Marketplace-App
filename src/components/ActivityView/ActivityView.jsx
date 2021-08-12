@@ -33,9 +33,9 @@ function ActivityView() {
 
     return(
         <section>
-            <Button variant="contained" color="primary" onClick={goToBookmark}>My Bookmark</Button>
+            <Button variant="outlined" color="primary" onClick={goToBookmark}>My Bookmark</Button>
             <h1>My Listings</h1>
-            <button onClick={addNewListing}>Add New Listing</button>
+            <Button variant="outlined" color="primary" onClick={addNewListing}>Add New Listing</Button>
             <article>
                 {mysellingitems.map(item => {
                     return (
