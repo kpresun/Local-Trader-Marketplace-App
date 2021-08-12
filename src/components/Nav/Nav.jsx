@@ -4,6 +4,12 @@ import { Link } from 'react-router-dom';
 import './Nav.css';
 import {useSelector} from 'react-redux';
 
+//material UI
+import { AppBar, Icon } from '@material-ui/core';
+import { Toolbar } from '@material-ui/core';
+import { IconButton } from '@material-ui/core';
+import MenuIcon from '@material-ui/icons/Menu';
+
 function Nav() {
 
   const user = useSelector((store) => store.user);
@@ -19,29 +25,34 @@ function Nav() {
   }
 
   return (
-    <div className="nav">
-      <Link to="/marketplace">
-        <h2 className="nav-title">Local Traders</h2>
-      </Link>
-      <div>
-        <Link className="navLink" to={loginLinkData.path}>
-          {loginLinkData.text}
+    <AppBar>
+      <Toolbar>
+        <IconButton>
+          <MenuIcon />
+        </IconButton>
+      </Toolbar>
+      <div className="nav">
+        <Link to="/marketplace">
+          <h2 className="nav-title">Local Traders</h2>
         </Link>
-
-        <Link className="navLink" to="/marketplace">
-          Marketplace
-        </Link>
-
-        {user.id && (
-          <>
-            <Link className="navLink" to="/profile-page">
-              Profile Page
-            </Link>
-            {/* <LogOutButton className="navLink" /> */}
-          </>
-        )}
+        <div>
+          <Link className="navLink" to={loginLinkData.path}>
+            {loginLinkData.text}
+          </Link>
+          <Link className="navLink" to="/marketplace">
+            Marketplace
+          </Link>
+          {user.id && (
+            <>
+              <Link className="navLink" to="/profile-page">
+                Profile Page
+              </Link>
+              {/* <LogOutButton className="navLink" /> */}
+            </>
+          )}
+        </div>
       </div>
-    </div>
+    </AppBar>
   );
 }
 

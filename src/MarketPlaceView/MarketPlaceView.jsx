@@ -4,7 +4,38 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 // import StarIcon from '@material-ui/icons/Star';
 
+//material-ui
+import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core';
+import { Container } from '@material-ui/core';
+import { Paper } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
+
 function Marketplace() {
+    
+    const useStyles = makeStyles({
+        root: {
+            maxWidth: 400,
+            height: 400,
+        },
+        media: {
+            maxWidth: 200,
+            height: 200,
+            justify: "center",
+        },
+        container: {
+            maxWidth: 500,
+            height: 500,
+        },
+    });
+
+    const classes = useStyles();
 
     const history = useHistory();
     const dispatch = useDispatch();
@@ -31,25 +62,35 @@ function Marketplace() {
     }
 
     return(
-        <section>
-            <h1>Local Traders Marketplace</h1>
-            <article>
+        <Container className={classes.container}>
+            <Typography variant="body" color="textPrimary" component="h1">Marketplace</Typography>
+            <Grid container padding={4} justify="center">
                 {allProducts.map(product => {
                     return (
-                        <div key={product.id} >
-                            <img src={product.image_url} height="200" />
-                            <h2>{product.name}</h2>
-                            <h3>Price: ${product.price}</h3>
-                            <h4>Description: {product.description}</h4>
-                            <h4>Category: {product.category_type}</h4>
-                            <h4>Status: {product.status_type}</h4>
-                            <button onClick={() =>{contactSeller(product.user_id)}}>Contact</button>
-                            <button onClick={() => {bookmarkClick(product)}}>Bookmark</button>
-                        </div>
+                        <Paper variant="outlined" square>
+                            <Card className={classes.root} key={product.id} >
+                                <Grid item>
+                                    <CardActionArea>
+                                        <CardMedia className={classes.media} image={product.image_url} />
+                                        <CardContent>
+                                            <Typography gutterBottom variant="h5" component="h2">{product.name}</Typography>
+                                            <Typography variant="body2" color="textSecondary" component="p">Price: ${product.price}</Typography>
+                                            <Typography variant="body2" color="textSecondary" component="p">Description: {product.description}</Typography>
+                                            <Typography variant="body2" color="textSecondary" component="p">Category: {product.category_type}</Typography>
+                                            <Typography variant="body2" color="textSecondary" component="p">Status: {product.status_type}</Typography>
+                                        </CardContent>
+                                    </CardActionArea>
+                                    <CardActions>
+                                        <Button size="small" color="primary" onClick={() =>{contactSeller(product.user_id)}}>Contact</Button>
+                                        <Button size="small" color="primary" onClick={() => {bookmarkClick(product)}}>Bookmark</Button>
+                                    </CardActions>
+                                </Grid>
+                            </Card>
+                        </Paper>
                     )
                 })}
-            </article>
-        </section>
+            </Grid>
+        </Container>
     )
 }
 

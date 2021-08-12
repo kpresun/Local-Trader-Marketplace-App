@@ -2,6 +2,9 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
+//material-UI
+import Button from '@material-ui/core/Button';
+
 function ActivityView() {
 
     const dispatch = useDispatch();
@@ -30,7 +33,7 @@ function ActivityView() {
 
     return(
         <section>
-            <button onClick={goToBookmark}>My Bookmark</button>
+            <Button variant="contained" color="primary" onClick={goToBookmark}>My Bookmark</Button>
             <h1>My Listings</h1>
             <button onClick={addNewListing}>Add New Listing</button>
             <article>
