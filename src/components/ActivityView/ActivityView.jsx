@@ -67,7 +67,7 @@ function ActivityView() {
         <Container>
             <Button variant="outlined" color="primary" onClick={goToBookmark}>My Bookmark</Button>
             <Typography variant="body" color="textPrimary" component="h1">My Listings</Typography>
-            <Button variant="outlined" color="primary" onClick={addNewListing}>Add New Listing</Button>
+            <Button variant="contained" color="primary" onClick={addNewListing}>Add New Listing</Button>
             <Grid container justifyContent="center" alignItems="center" direction="column">
                 {mysellingitems.map(item => {
                     return (
