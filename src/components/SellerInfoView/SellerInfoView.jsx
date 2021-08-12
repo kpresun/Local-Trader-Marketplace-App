@@ -40,10 +40,12 @@ function SellerInfoView() {
     const classes = useStyles();
     // Material-UI
 
+    // const declared
     const dispatch = useDispatch();
     const params = useParams();
     const history = useHistory();
 
+    // on page load, dispatch with params
     useEffect(() => {
         console.log('--LOG-- SELLER INFO VIEW, the params.id is:', params.id);
         dispatch({
@@ -54,9 +56,11 @@ function SellerInfoView() {
         });
     }, [params.id]);
 
+    //store
     const thisSeller = useSelector(store => store.sellerReducer);
     console.log('--LOG-- thisSeller is:', thisSeller);
 
+    // go back to bookmark
     const goToBookmark = () => {
         history.push('/marketplace');
     }

@@ -51,20 +51,23 @@ function ListingDetail() {
     //stores
     const listingItemDetail = useSelector(store => store.listingDetailReducer);
 
+    // on page load, dispatch
     useEffect(() => {
         dispatch({ type: 'FETCH_ITEM_DETAIL', payload: {itemId: params.id} });
     }, [params.id]);
-    // try again wtihout useEffect  - Chris
 
+    // go back to my listings
     const goToMyListings = () => {
         history.push('/activity');
     }
 
+    // go back to edit view
     const goToEditView = (itemId) => {
         console.log('Inside goToEditView');
         history.push(`/activity/edit/${itemId}`);
     }
 
+    // dispatch delete of listing
     const deleteListing = (itemId) => {
         window.confirm('Are you sure you want to delete this listing?') &&
         dispatch({ type: 'DELETE_LISTING', payload: [itemId, history] });

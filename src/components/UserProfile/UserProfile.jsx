@@ -38,6 +38,7 @@ const useStyles = makeStyles({
 const classes = useStyles();
 // Material-UI
 
+// only pulling from the current user store
     const user = useSelector(store => store.user);
 
     return( 

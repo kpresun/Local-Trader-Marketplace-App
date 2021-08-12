@@ -57,6 +57,7 @@ function LoginForm() {
 const classes = useStyles();
 // Material-UI
 
+//sets the username and password
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const errors = useSelector(store => store.errors);

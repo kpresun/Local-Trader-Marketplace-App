@@ -74,23 +74,3 @@ function Nav() {
 }
 
 export default Nav;
-
-
-
- {/* <Link to="/marketplace">
-          <h2 className="nav-title">Local Traders</h2>
-        </Link> */}
-{/* <Link className="navLink" to={loginLinkData.path}>
-              {loginLinkData.text}
-            </Link>
-          <Link className="navLink" to="/marketplace">
-            Marketplace
-          </Link>
-          {user.id && (
-            <>
-              <Link className="navLink" to="/profile-page">
-                Profile Page
-              </Link>
-              <LogOutButton className="navLink" />
-            </>
-          )} */}
