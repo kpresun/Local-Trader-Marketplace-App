@@ -21,17 +21,19 @@ function Marketplace() {
     
     const useStyles = makeStyles({
         root: {
-            maxWidth: 400,
-            height: 400,
+            width: 352,
         },
         media: {
-            maxWidth: 200,
+            width: 352,
             height: 200,
             justify: "center",
         },
         container: {
-            maxWidth: 500,
-            height: 500,
+            width: 352,
+            padding: 0,
+        },
+        cardGrid: {
+            margin: "16px 0px 16px 0px",
         },
     });
 
@@ -44,16 +46,11 @@ function Marketplace() {
 
     useEffect(() => {
         dispatch({ type: 'FETCH_PRODUCTS'});
-        // dispatch({ type: 'FETCH_BOOKMARKS'}) maybe for the conditional rendering
     }, []);
 
-    // handles adding and deleting item to bookmark: STILL NEED TO CREATE DELETE ROUTE
+    // handles adding and deleting item to bookmark
     const bookmarkClick = (product) => {
-        if (product) {
-            dispatch({ type: 'ADD_TO_BOOKMARK', payload: product})
-        } else {
-            dispatch({ type: 'DELETE_FROM_BOOKMARK', payload: product})
-        }
+        dispatch({ type: 'ADD_TO_BOOKMARK', payload: product});
     }
 
     const contactSeller = (sellerId) => {
@@ -62,14 +59,13 @@ function Marketplace() {
     }
 
     return(
-        <Container className={classes.container}>
+        <Container className={classes.container} >
             <Typography variant="body" color="textPrimary" component="h1">Marketplace</Typography>
-            <Grid container padding={4} justify="center">
+            <Grid container justifyContent="center" alignItems="center" direction="column">
                 {allProducts.map(product => {
                     return (
-                        <Paper variant="outlined" square>
+                        <Grid item xs={12} className={classes.cardGrid}>
                             <Card className={classes.root} key={product.id} >
-                                <Grid item>
                                     <CardActionArea>
                                         <CardMedia className={classes.media} image={product.image_url} />
                                         <CardContent>
@@ -84,9 +80,8 @@ function Marketplace() {
                                         <Button size="small" color="primary" onClick={() =>{contactSeller(product.user_id)}}>Contact</Button>
                                         <Button size="small" color="primary" onClick={() => {bookmarkClick(product)}}>Bookmark</Button>
                                     </CardActions>
-                                </Grid>
                             </Card>
-                        </Paper>
+                        </Grid>
                     )
                 })}
             </Grid>

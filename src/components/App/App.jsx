@@ -30,6 +30,7 @@ import SellerInfoView from '../SellerInfoView/SellerInfoView';
 import ListingDetail from '../ListingDetail/ListingDetail';
 import EditListingView from '../EditListingView/EditListingView';
 import AddNewListing from '../AddNewListing/AddNewListing';
+import { makeStyles } from '@material-ui/core';
 
 function App() {
   const dispatch = useDispatch();

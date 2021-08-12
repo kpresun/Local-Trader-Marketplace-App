@@ -9,7 +9,6 @@ function UserProfile() {
     return( 
         <div>
         <h1>Your Profile</h1>
-        <p>{user.id}</p>
         <h2>UserName: {user.username}</h2>
         <h2>Email: {user.email}</h2>
         <h3>Phone Number: {user.phone_number}</h3>
