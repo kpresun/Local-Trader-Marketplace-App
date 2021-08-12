@@ -14,6 +14,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core';
 import { Container } from '@material-ui/core';
 import { Grid } from '@material-ui/core';
+import { AutorenewTwoTone } from '@material-ui/icons';
 //material-ui
 
 function ActivityView() {
@@ -35,6 +36,9 @@ function ActivityView() {
         cardGrid: {
             margin: "16px 0px 16px 0px",
         },
+        Header: {
+            padding: '10px',
+        }
     });
     const classes = useStyles();
     // Material-UI
@@ -66,7 +70,7 @@ function ActivityView() {
     return(
         <Container>
             <Button variant="outlined" color="primary" onClick={goToBookmark}>My Bookmark</Button>
-            <Typography variant="body" color="textPrimary" component="h1">My Listings</Typography>
+            <Typography className={classes.Header} variant="body" color="textPrimary" component="h1">My Listings</Typography>
             <Button variant="contained" color="primary" onClick={addNewListing}>Add New Listing</Button>
             <Grid container justifyContent="center" alignItems="center" direction="column">
                 {mysellingitems.map(item => {
@@ -78,7 +82,6 @@ function ActivityView() {
                                     <Typography gutterBottom variant="h5" component="h2">{item.name}</Typography>
                                     <Typography>Status: {item.status_type}</Typography>
                                     <Typography>Price: ${item.price}</Typography>
-                                    <Typography>Description: {item.description}</Typography>
                                 </CardActionArea>
                             </Card>
                         </Grid>

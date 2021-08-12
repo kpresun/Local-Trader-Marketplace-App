@@ -3,7 +3,43 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
+//material-ui
+import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core';
+import { Container } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
+
 function BookmarkView() {
+
+    // Material-UI
+    const useStyles = makeStyles({
+        root: {
+            width: 352,
+        },
+        media: {
+            width: 352,
+            height: 200,
+            justify: "center",
+        },
+        container: {
+            width: 352,
+            padding: 0,
+        },
+        cardGrid: {
+            margin: "16px 0px 16px 0px",
+        },
+        Header: {
+            padding: '10px',
+        },
+    });
+    const classes = useStyles();
+    // Material-UI
 
     const history = useHistory();
     const dispatch = useDispatch();
@@ -16,8 +52,6 @@ function BookmarkView() {
     }, []);
 
     const detailViewClick = (productId) => {
-        // dispatch({ type: 'FETCH_SINGLE_BOOKMARK', payload: item.product_id})
-        // console.log('--LOG-- the product ID is:', item.product_id);
         history.push(`/bookmark/detail/${productId}`);
     }
 
@@ -31,25 +65,33 @@ function BookmarkView() {
     }
 
     return(
-        <section>
-            <button onClick={goToMyListing}>My Listings</button>
-            <h1>My Bookmarks</h1>
-            <article>
+        <Container className={classes.container} >
+            <Button variant="outlined" color="primary" onClick={goToMyListing}>My Listings</Button>
+            <Typography className={classes.Header} className={classes.listingHeader} variant="body" color="textPrimary" component="h1">My Bookmarks</Typography>
+            <Grid container justifyContent="center" alignItems="center" direction="column">
                 {userBookmark.map(item => {
                     return (
-                        <div key={item.id}>
-                            <img src={item.image_url} height="200" onClick={() => {detailViewClick(item.product_id)}}/>
-                            <h2>{item.name}</h2>
-                            <h3>Price: ${item.price}</h3>
-                            <h4>Description: {item.description}</h4>
-                            <h4>Status: {item.status_type}</h4>
-                            <h4>Category: {item.category_type}</h4>
-                            <button onClick={() => {deleteBookmark(item.id)}}>Remove Bookmark</button>
-                        </div>
+                        <Grid item xs={12} className={classes.cardGrid} key={item.id}>
+                            <Card>
+                                <CardActionArea>
+                                    <CardMedia className={classes.media} image={item.image_url} onClick={() => {detailViewClick(item.product_id)}}/>
+                                    <CardContent>
+                                        <Typography gutterBottom variant="h5" component="h2">{item.name}</Typography>
+                                        <Typography variant="body2" color="textSecondary" component="p">Price: ${item.price}</Typography>
+                                        <Typography variant="body2" color="textSecondary" component="p">Description: {item.description}</Typography>
+                                        <Typography variant="body2" color="textSecondary" component="p">Status: {item.status_type}</Typography>
+                                        <Typography variant="body2" color="textSecondary" component="p">Category: {item.category_type}</Typography>
+                                    </CardContent>
+                                </CardActionArea>
+                                <CardActions size="small" color="primary" >
+                                    <Button onClick={() => {deleteBookmark(item.id)}}>Remove Bookmark</Button>
+                                </CardActions>
+                            </Card>
+                        </Grid>
                     )
                 })}
-            </article>
-        </section>
+            </Grid>
+        </Container>
     )
 }
 

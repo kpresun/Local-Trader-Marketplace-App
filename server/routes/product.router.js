@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
   FROM "product" JOIN "category"
   ON "product".category_id = "category".id
   JOIN "status" ON "status".id = "product".status_id
-  ORDER BY "product".created_date ASC;`;
+  ORDER BY "product".created_date DESC;`;
     pool.query(query)
     .then(dbResponse => {
         res.send(dbResponse.rows);

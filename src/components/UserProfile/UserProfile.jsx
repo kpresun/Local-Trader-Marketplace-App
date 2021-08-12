@@ -31,6 +31,9 @@ const useStyles = makeStyles({
     cardGrid: {
         margin: "16px 0px 16px 0px",
     },
+    Header: {
+        padding: '10px',
+    },
 });
 const classes = useStyles();
 // Material-UI
@@ -40,7 +43,7 @@ const classes = useStyles();
     return( 
         <Container>
         <Grid container justifyContent="center" alignItems="center" direction="column">
-            <Typography variant="body" color="textPrimary" component="h1">My Profile</Typography>
+            <Typography className={classes.Header} variant="body" color="textPrimary" component="h1">My Profile</Typography>
             <Grid item>
                 <Card>
                     <CardContent>

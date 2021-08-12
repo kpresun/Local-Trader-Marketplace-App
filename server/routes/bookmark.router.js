@@ -48,7 +48,7 @@ router.post('/', (req, res) => {
       res.sendStatus(500);
     })
   });
-
+// can be req.user.id
 
   /**
  * GET route: Will return only a single bookmark from bookmark table
@@ -56,13 +56,13 @@ router.post('/', (req, res) => {
  router.get('/detail/:id', (req, res) => {
    const productId = req.params.id;
    console.log('--LOG-- router.get, req.params.id is:', productId);
-  const query = `SELECT "bookmark".id, "bookmark".user_id, "bookmark".product_id, "product".image_url, "product".name, "product".price, "product".description, "category".category_type, "status".status_type			
+  const query = `SELECT "bookmark".id, "product".user_id, "bookmark".product_id, "product".image_url, "product".name, "product".price, "product".description, "category".category_type, "status".status_type			
   FROM "product" JOIN "bookmark"
   ON "product".id = "bookmark".product_id
   JOIN "user" ON "bookmark".user_id = "user".id
   JOIN "category" ON "category".id = "product".category_id
   JOIN "status" ON "status".id = "product".status_id
-  WHERE "bookmark".product_id = $1;`;
+  WHERE "product".id = $1;`;
   pool.query(query, [productId])
   .then(dbResponse => {
     console.log('--log-- router.get detail/:id, successfully returned single bookmark:', dbResponse.rows);

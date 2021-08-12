@@ -35,6 +35,9 @@ function Marketplace() {
         cardGrid: {
             margin: "16px 0px 16px 0px",
         },
+        Header: {
+            padding: '10px',
+        },
     });
     const classes = useStyles();
     // Material-UI
@@ -42,6 +45,7 @@ function Marketplace() {
     const history = useHistory();
     const dispatch = useDispatch();
     const allProducts = useSelector(store => store.productReducer);
+    const user = useSelector(store => store.user);
 
     // on page load
     useEffect(() => {
@@ -61,7 +65,7 @@ function Marketplace() {
 
     return(
         <Container className={classes.container} >
-            <Typography variant="body" color="textPrimary" component="h1">Marketplace</Typography>
+            <Typography className={classes.Header} variant="body" color="textPrimary" component="h1">Marketplace</Typography>
             <Grid container justifyContent="center" alignItems="center" direction="column">
                 {allProducts.map(product => {
                     return (
