@@ -14,11 +14,11 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core';
 import { Container } from '@material-ui/core';
-import { Paper } from '@material-ui/core';
 import { Grid } from '@material-ui/core';
 
 function Marketplace() {
-    
+   
+    // Material-UI
     const useStyles = makeStyles({
         root: {
             width: 352,
@@ -36,23 +36,24 @@ function Marketplace() {
             margin: "16px 0px 16px 0px",
         },
     });
-
     const classes = useStyles();
+    // Material-UI
 
     const history = useHistory();
     const dispatch = useDispatch();
     const allProducts = useSelector(store => store.productReducer);
-    // const userBookmark = useSelector(store => store.bookmarkReducer);
 
+    // on page load
     useEffect(() => {
         dispatch({ type: 'FETCH_PRODUCTS'});
     }, []);
 
-    // handles adding and deleting item to bookmark
+    // handles adding item to bookmark
     const bookmarkClick = (product) => {
         dispatch({ type: 'ADD_TO_BOOKMARK', payload: product});
     }
 
+    // pushes to seller contact information
     const contactSeller = (sellerId) => {
         console.log('--LOG-- the seller ID is:', sellerId );
         history.push(`/seller/detail/${sellerId}`);
@@ -90,8 +91,3 @@ function Marketplace() {
 }
 
 export default Marketplace;
-
-
-// maybe create a boolean for bookmark table
-
-{/* <StarIcon onClick={() => {bookmarkClick(product)}}>bookmark</StarIcon> */}
