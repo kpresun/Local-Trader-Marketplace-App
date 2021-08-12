@@ -47,9 +47,9 @@ const classes = useStyles();
             <Grid item>
                 <Card>
                     <CardContent>
-                        <h2>UserName: {user.username}</h2>
-                        <h2>Email: {user.email}</h2>
-                        <h3>Phone Number: {user.phone_number}</h3>
+                        <Typography variant="body2" color="textSecondary" component="p" >UserName: {user.username}</Typography>
+                        <Typography variant="body2" color="textSecondary" component="p" >Email: {user.email}</Typography>
+                        <Typography variant="body2" color="textSecondary" component="p" >Phone Number: {user.phone_number}</Typography>
                     </CardContent>
                 </Card>
                 <CardActionArea>

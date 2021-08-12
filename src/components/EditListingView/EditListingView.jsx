@@ -41,6 +41,13 @@ function EditListingView() {
             Header: {
                 padding: '10px',
             },
+            textField: {
+                padding: '8px 0px 8px 0px',
+                width: '100%',
+            },
+            selectors: {
+                padding: '8px 0px 8px 0px',
+            },
         });
         const classes = useStyles();
         // Material-UI
@@ -109,26 +116,32 @@ function EditListingView() {
                             <CardMedia className={classes.media} image={listingItemDetail.image_url} />
                             <CardActionArea>
                                 <CardContent>
-                                    <TextField id="filled-basic" label="Image Url" variant="filled" type="text" placeholder="Image Url" value={url} onChange={event => setUrl(event.target.value)} />
-                                    <TextField id="filled-basic" label="Name" variant="filled" type="text" placeholder="Name" value={name} onChange={event => setName(event.target.value)} />
-                                    <TextField id="filled-basic" label="Price" variant="filled" type="text" placeholder="Price" value={price} onChange={event => setPrice(event.target.value)} />
-                                    <TextField id="filled-basic" label="Description" variant="filled" type="text" placeholder="Description" value={description} onChange={event => setDescription(event.target.value)} />
+                                    <TextField className={classes.textField} id="filled-basic" label="Image Url" variant="filled" type="text" value={url} onChange={event => setUrl(event.target.value)} />
+                                    <TextField className={classes.textField} id="filled-basic" label="Name" variant="filled" type="text"  value={name} onChange={event => setName(event.target.value)} />
+                                    <TextField className={classes.textField} id="filled-basic" label="Price" variant="filled" type="text" value={price} onChange={event => setPrice(event.target.value)} />
+                                    <TextField className={classes.textField} id="filled-basic" label="Description" variant="filled" type="text" value={description} onChange={event => setDescription(event.target.value)} />
                                 </CardContent>
                             </CardActionArea>
-                            <Select onChange={event => setCategory(event.target.value)}>
-                                {categoryTypes.map(category => {
-                                    return (
-                                        <option key={category.id} value={category.id}>{category.category_type}</option>
-                                    )
-                                })}
-                            </Select>
-                            <Select onChange={event => setStatus(event.target.value)}>
-                                {statusTypes.map(status => {
-                                    return (
-                                        <option key={status.id} value={status.id}>{status.status_type}</option>
-                                    )
-                                })}
-                            </Select>
+                            <FormControl>
+                                <InputLabel id="select-label">Categoriess</InputLabel>
+                                <Select className={classes.selectors} onChange={event => setCategory(event.target.value)}>
+                                    {categoryTypes.map(category => {
+                                        return (
+                                            <option key={category.id} value={category.id}>{category.category_type}</option>
+                                        )
+                                    })}
+                                </Select>
+                            </FormControl>
+                            <FormControl>
+                                <InputLabel id="select-label">Status</InputLabel>
+                                <Select className={classes.selectors}  onChange={event => setStatus(event.target.value)}>
+                                    {statusTypes.map(status => {
+                                        return (
+                                            <option key={status.id} value={status.id}>{status.status_type}</option>
+                                        )
+                                    })}
+                                </Select>
+                            </FormControl>
                             <CardActions>
                                 <Button size="small" color="primary" type="submit" >Update Listing</Button>
                                 <Button size="small" color="primary" onClick={() => {{backToActivity(listingItemDetail.id)}}}>Cancel</Button>
