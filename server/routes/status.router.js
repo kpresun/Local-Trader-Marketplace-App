@@ -3,7 +3,7 @@ const pool = require('../modules/pool');
 const router = express.Router();
 
 /**
- * GET route template
+ * GET route: Gets all status from database
  */
 router.get('/', (req, res) => {
     const query = `SELECT * FROM "status";`;
@@ -15,13 +15,6 @@ router.get('/', (req, res) => {
         console.log('--ERROR--, status router.get, unable to return statuses:', error);
         res.sendStatus(500);
     })
-});
-
-/**
- * POST route template
- */
-router.post('/', (req, res) => {
-  // POST route code here
 });
 
 module.exports = router;

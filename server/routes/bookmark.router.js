@@ -3,21 +3,19 @@ const pool = require('../modules/pool');
 const router = express.Router();
 
 /**
- * POST route: bookmarks item to bookmark table
+ * POST route: adds item to bookmark
  */
 router.post('/', (req, res) => {
   console.log('--log-- The req.body is:', req.body);
   console.log('--LOG-- what is the current users id?', req.user.id);
   const userId = req.user.id;
   const productId = req.body.id;
-  console.log(req.user.id); // maybe req.user?
+  console.log(req.user.id);
   const query = `INSERT INTO "bookmark" ("user_id", "product_id")
                 VALUES ($1, $2);`;
-  // RETURNING "id" - might not need
     pool.query(query, [userId, productId])
     .then(dbResponse => {
       res.sendStatus(200);
-        // res.send(dbResponse.rows);
     })
     .catch(error => {
         console.log('--ERROR-- unable to return bookmark:', error);
@@ -48,7 +46,6 @@ router.post('/', (req, res) => {
       res.sendStatus(500);
     })
   });
-// can be req.user.id
 
   /**
  * GET route: Will return only a single bookmark from bookmark table

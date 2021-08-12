@@ -4,7 +4,7 @@ const pool = require('../modules/pool');
 const router = express.Router();
 
 /**
- * GET route template
+ * GET route: Get all categories from database
  */
 router.get('/', (req, res) => {
   const query = `SELECT * FROM "category";`;
@@ -16,13 +16,6 @@ router.get('/', (req, res) => {
       console.log('--ERROR-- router.get, unable to return categories:', error);
       res.sendStatus(500);
   })
-});
-
-/**
- * POST route template
- */
-router.post('/', (req, res) => {
-  // POST route code here
 });
 
 module.exports = router;

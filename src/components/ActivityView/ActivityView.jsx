@@ -46,25 +46,31 @@ function ActivityView() {
     const classes = useStyles();
     // Material-UI
 
+    // declared constants
     const dispatch = useDispatch();
     const history = useHistory();
     const user = useSelector(store => store.user);
     const mysellingitems = useSelector(store => store.activityReducer);
     console.log('--LOG-- my current selling items are:', mysellingitems);
 
+
+// on page load dispatch
   useEffect(() => {
     dispatch({ type: 'FETCH_MY_ITEMS'});
   }, []);
 
+  // pushes to bookmark of the user
     const goToBookmark = () => {
         history.push(`/bookmark/user/${user.id}`);
     }
 
+    // goes to item detail
     const itemDetailClick = (itemId) => {
         history.push(`activity/detail/${itemId}`);
         console.log('--LOG-- itemDetailClick, the id is:', itemId);
     }
 
+    // Goes to new listing view
     const addNewListing = () => {
         history.push('/activity/listing');
         console.log('pushing into addingnewlisting');

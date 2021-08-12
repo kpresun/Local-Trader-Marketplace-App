@@ -55,13 +55,16 @@ function AddNewListing() {
     const classes = useStyles();
     // Material-UI
 
+    // const declared
     const dispatch = useDispatch();
     const history = useHistory();
 
+    // stores
     const categoryTypes = useSelector(store => store.categoryReducer); 
     const statusTypes = useSelector(store => store.statusReducer);
     const thisUser = useSelector(store => store.user);
 
+    // useStates
     const [url, setUrl] = useState('');
     const [name, setName] = useState('');
     const [price, setPrice] = useState('');
@@ -69,15 +72,18 @@ function AddNewListing() {
     const [category, setCategory] = useState('');
     const [status, setStatus] = useState(''); 
 
+    // on page load, dispatches
     useEffect(() => {
         dispatch({ type: 'FETCH_CATEGORY_TYPE'}); 
         dispatch({ type: 'FETCH_STATUS_TYPE'});
     }, []);
 
+    // goes to activity view
     const toActivity = () => {
         history.push('/activity');
     }
 
+    // sets the object to send as a dispatch
     const addNewListing = (event) => {
         event.preventDefault();
         const newItemAdded ={

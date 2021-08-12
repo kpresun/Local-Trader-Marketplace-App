@@ -21,6 +21,9 @@ router.get('/', (req, res) => {
     })
 });
 
+/**
+ * Get Route: Will get product equal to id
+ */
 router.get('/:id', (req, res) => {
   const listingId = req.params.id;
   console.log('--LOG-- router.get for listing item, the id is:', listingId);
@@ -55,7 +58,6 @@ router.get('/:id', (req, res) => {
   WHERE "product".id = $7;`;
   pool.query(editingQuery, [item.status_id, item.image_url, item.name, item.price, item.description, item.category_id, item.id])
   .then(dbResponse => {
-    // res.send(dbResponse.data);
     res.sendStatus(200);
   })
   .catch(error => {
@@ -65,7 +67,7 @@ router.get('/:id', (req, res) => {
 });
 
 /**
- * POST route template
+ * POST route: posts a new product to product table
  */
 router.post('/', (req, res) => {
   console.log('The req.body for posting is:', req.body);
@@ -85,6 +87,9 @@ router.post('/', (req, res) => {
   })
 });
 
+/**
+ * Delete item from the product database
+ */
 router.delete('/:id', (req, res) => {
   const deleteId = req.params.id;
   console.log('what is req.params.id?', deleteId);

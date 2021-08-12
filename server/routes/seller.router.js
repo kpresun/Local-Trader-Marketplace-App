@@ -3,7 +3,7 @@ const pool = require('../modules/pool');
 const router = express.Router();
 
 /**
- * GET route template
+ * GET route: Gets all table columns from user table that equals id.
  */
 router.get('/:id', (req, res) => {
     const sellerId = req.params.id;
@@ -17,13 +17,6 @@ router.get('/:id', (req, res) => {
         console.log('--ERROR-- router.get, seller, unable to return the seller:', error);
         res.sendStatus(500);
     })
-});
-
-/**
- * POST route template
- */
-router.post('/', (req, res) => {
-  // POST route code here
 });
 
 module.exports = router;
