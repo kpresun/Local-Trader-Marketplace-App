@@ -78,9 +78,7 @@ function BookmarkView() {
                                     <CardContent>
                                         <Typography gutterBottom variant="h5" component="h2">{item.name}</Typography>
                                         <Typography variant="body2" color="textSecondary" component="p">Price: ${item.price}</Typography>
-                                        <Typography variant="body2" color="textSecondary" component="p">Description: {item.description}</Typography>
                                         <Typography variant="body2" color="textSecondary" component="p">Status: {item.status_type}</Typography>
-                                        <Typography variant="body2" color="textSecondary" component="p">Category: {item.category_type}</Typography>
                                     </CardContent>
                                 </CardActionArea>
                                 <CardActions size="small" color="primary" >

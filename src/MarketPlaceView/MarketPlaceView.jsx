@@ -45,7 +45,6 @@ function Marketplace() {
     const history = useHistory();
     const dispatch = useDispatch();
     const allProducts = useSelector(store => store.productReducer);
-    const user = useSelector(store => store.user);
 
     // on page load
     useEffect(() => {

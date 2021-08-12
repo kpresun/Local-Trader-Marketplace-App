@@ -3,7 +3,44 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 
+//material-ui
+import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core';
+import { Container } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
+import { TextField } from '@material-ui/core';
+
 function EditListingView() {
+
+        // Material-UI
+        const useStyles = makeStyles({
+            root: {
+                width: 352,
+            },
+            media: {
+                width: 352,
+                height: 200,
+                justify: "center",
+            },
+            container: {
+                width: 352,
+                padding: 0,
+            },
+            cardGrid: {
+                margin: "16px 0px 16px 0px",
+            },
+            Header: {
+                padding: '10px',
+            },
+        });
+        const classes = useStyles();
+        // Material-UI
 
     const params = useParams();
     const dispatch = useDispatch();
@@ -59,15 +96,15 @@ function EditListingView() {
     }
 
     return (
-        <section>
-            <button onClick={() => {{backToActivity(listingItemDetail.id)}}}>Back</button>
-            <h1>Edit Mode</h1>
+        <Container>
+            <Button variant="outlined" color="primary" onClick={() => {{backToActivity(listingItemDetail.id)}}}>Back</Button>
+            <Typography>Edit Mode</Typography>
             <form onSubmit={editItemDetails}>
-                <img src={listingItemDetail.image_url} height="200" />
-                <input type="text" placeholder="Image Url" value={url} onChange={event => setUrl(event.target.value)} />
-                <input type="text" placeholder="Name" value={name} onChange={event => setName(event.target.value)} />
-                <input type="text" placeholder="Price" value={price} onChange={event => setPrice(event.target.value)} />
-                <input type="text" placeholder="Description" value={description} onChange={event => setDescription(event.target.value)} />
+                <CardMedia className={classes.media} image={listingItemDetail.image_url} height="200" />
+                <TextField id="filled-basic" label="Image Url" variant="filled" type="text" placeholder="Image Url" value={url} onChange={event => setUrl(event.target.value)} />
+                <TextField id="filled-basic" label="Name" variant="filled" type="text" placeholder="Name" value={name} onChange={event => setName(event.target.value)} />
+                <TextField id="filled-basic" label="Price" variant="filled" type="text" placeholder="Price" value={price} onChange={event => setPrice(event.target.value)} />
+                <TextField id="filled-basic" label="Description" variant="filled" type="text" placeholder="Description" value={description} onChange={event => setDescription(event.target.value)} />
                 <select onChange={event => setCategory(event.target.value)}>
                     {categoryTypes.map(category => {
                         return (
@@ -82,10 +119,10 @@ function EditListingView() {
                         )
                     })}
                 </select>
-                <button type="submit" >Update Listing</button>
-                <button onClick={() => {{backToActivity(listingItemDetail.id)}}}>Cancel</button>
+                <Button size="small" color="primary" type="submit" >Update Listing</Button>
+                <Button size="small" color="primary" onClick={() => {{backToActivity(listingItemDetail.id)}}}>Cancel</Button>
             </form>
-        </section>
+        </Container>
     )
 }
 

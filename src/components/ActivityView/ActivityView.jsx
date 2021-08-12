@@ -80,8 +80,8 @@ function ActivityView() {
                                 <CardActionArea>
                                     <CardMedia className={classes.media} image={item.image_url} onClick={() =>{itemDetailClick(item.id)}}/>
                                     <Typography gutterBottom variant="h5" component="h2">{item.name}</Typography>
-                                    <Typography>Status: {item.status_type}</Typography>
-                                    <Typography>Price: ${item.price}</Typography>
+                                    <Typography variant="body2" color="textSecondary" component="p" >Status: {item.status_type}</Typography>
+                                    <Typography variant="body2" color="textSecondary" component="p" >Price: ${item.price}</Typography>
                                 </CardActionArea>
                             </Card>
                         </Grid>

@@ -69,15 +69,15 @@ function ListingDetail() {
             <Button variant="outlined" color="primary" onClick={goToMyListings}>Back</Button>
             <Typography className={classes.Header} variant="body" color="textPrimary" component="h1">{listingItemDetail.name}</Typography>
             <Grid container justifyContent="center" alignItems="center" direction="column">
-                <Grid item>
+                <Grid item item xs={12} className={classes.cardGrid}>
                     <Card className={classes.root}>
                         <CardMedia className={classes.media} image={listingItemDetail.image_url} />
                         <CardActionArea>
                             <CardContent>
-                                <Typography>Price: ${listingItemDetail.price} </Typography>
-                                <Typography>Description: {listingItemDetail.description} </Typography>
-                                <Typography>Category: {listingItemDetail.category_type}</Typography>
-                                <Typography>Status: {listingItemDetail.status_type}</Typography>
+                                <Typography variant="body2" color="textSecondary" component="p" >Price: ${listingItemDetail.price} </Typography>
+                                <Typography variant="body2" color="textSecondary" component="p" >Description: {listingItemDetail.description} </Typography>
+                                <Typography variant="body2" color="textSecondary" component="p" >Category: {listingItemDetail.category_type}</Typography>
+                                <Typography variant="body2" color="textSecondary" component="p" >Status: {listingItemDetail.status_type}</Typography>
                             </CardContent>
                         </CardActionArea>
                         <CardActions>
