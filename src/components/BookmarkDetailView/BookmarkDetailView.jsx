@@ -45,11 +45,13 @@ function BookmarkDetailView() {
     const classes = useStyles();
     // Material-UI
 
+    //declared constants
     const dispatch = useDispatch();
     const params = useParams();
     const history = useHistory();
     const user = useSelector(store => store.user);
 
+    // on page load, dispatch with params
     useEffect(() => {
         console.log('--LOG-- The params.id is:', params.id);
         dispatch({
@@ -60,18 +62,22 @@ function BookmarkDetailView() {
     });
     }, [params.id]);
 
+    // store
     const singleBookmark = useSelector(store => store.allBookmarkReducers.singleBookmarkReducer);
     console.log('--LOG-- singleBookmark is:', singleBookmark);
 
+    // click to go back to bookmark
     const goBackToBookMark = () => {
         history.push(`/bookmark/user/${user.id}`);
     }
 
+    //click to go to seller info view
     const contactSeller = (sellerId) => {
         console.log('--LOG-- the seller ID is:', sellerId );
         history.push(`/seller/detail/${sellerId}`);
     }
 
+    // delete click
     const deleteBookmark = (deleteID) => {
         dispatch({ type: 'DELETE_BOOKMARK', payload: deleteID});
         console.log('--LOG-- ID to delete:', deleteID);

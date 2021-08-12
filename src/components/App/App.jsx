@@ -20,7 +20,7 @@ import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 
-//Components I created
+//My components
 import Marketplace from '../../MarketPlaceView/MarketPlaceView';
 import UserProfile from '../UserProfile/UserProfile';
 import ActivityView from '../ActivityView/ActivityView';

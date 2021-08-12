@@ -44,25 +44,31 @@ function BookmarkView() {
     const classes = useStyles();
     // Material-UI
 
+    //declared constant
     const history = useHistory();
     const dispatch = useDispatch();
+
+    //store
     const user = useSelector(store => store.user);
     const userBookmark = useSelector(store => store.allBookmarkReducers.bookmarkReducer);
-    console.log('--LOG-- userBookmark is:', userBookmark);
 
+    // on page load, dispatch
     useEffect(() => {
         dispatch({ type: 'FETCH_BOOKMARK', payload: user.id });
     }, []);
 
+    // click to go to detail view
     const detailViewClick = (productId) => {
         history.push(`/bookmark/detail/${productId}`);
     }
 
+    // click to go to delete bookmark
     const deleteBookmark = (deleteID) => {
         dispatch({ type: 'DELETE_BOOKMARK', payload: deleteID});
         console.log('--LOG-- ID to delete:', deleteID);
     }
 
+    // click to go to my listings view
     const goToMyListing = () => {
         history.push('/activity');
     }

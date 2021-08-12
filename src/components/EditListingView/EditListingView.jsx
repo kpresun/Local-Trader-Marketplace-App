@@ -58,13 +58,17 @@ function EditListingView() {
         const classes = useStyles();
         // Material-UI
 
+    // declared constants
     const params = useParams();
     const dispatch = useDispatch();
     const history = useHistory();
+
+    //stores
     const categoryTypes = useSelector(store => store.categoryReducer);
     const statusTypes = useSelector(store => store.statusReducer);
     const listingItemDetail = useSelector(store => store.listingDetailReducer);
 
+    // useStates 
     const [itemId, setItemId] = useState('');
     const [url, setUrl] = useState('');
     const [name, setName] = useState('');
@@ -73,6 +77,7 @@ function EditListingView() {
     const [category, setCategory] = useState('');
     const [status, setStatus] = useState('');
 
+    // on page load, dispatch
     useEffect(() => {
         console.log('--LOG-- useEffect, the params.id is:', params.id );
        dispatch({ type: 'FETCH_CATEGORY_TYPE'}); 
@@ -81,6 +86,7 @@ function EditListingView() {
        setAllFields();
     }, [params.id]);
 
+    // set the fields to the previous values
     const setAllFields = () => {
         setItemId(listingItemDetail.id);
         setUrl(listingItemDetail.image_url);
@@ -91,11 +97,13 @@ function EditListingView() {
         setStatus(listingItemDetail.status_type);
     }
 
+    // go back to activity
     const backToActivity = (itemId) => {
         history.push(`/activity/detail/${itemId}`);
         // edit this when we have the item id
     }
 
+    // go back to edit details
     const editItemDetails = (event) => {
         event.preventDefault();
         const editingInfo = {

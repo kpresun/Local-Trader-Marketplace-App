@@ -43,9 +43,12 @@ function ListingDetail() {
     const classes = useStyles();
     // Material-UI
 
+    //declared consts
     const history = useHistory();
     const dispatch = useDispatch();
     const params = useParams();
+
+    //stores
     const listingItemDetail = useSelector(store => store.listingDetailReducer);
 
     useEffect(() => {
