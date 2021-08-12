@@ -38,7 +38,10 @@ function ActivityView() {
         },
         Header: {
             padding: '10px',
-        }
+        },
+        headerButtons: {
+            margin: '8px 4px 0px 4px',
+        },
     });
     const classes = useStyles();
     // Material-UI
@@ -68,11 +71,11 @@ function ActivityView() {
     }
 
     return(
-        <Container>
-            <Button variant="outlined" color="primary" onClick={goToBookmark}>My Bookmark</Button>
-            <Typography className={classes.Header} variant="body" color="textPrimary" component="h1">My Listings</Typography>
-            <Button variant="contained" color="primary" onClick={addNewListing}>Add New Listing</Button>
+        <Container className={classes.container}>
+            <Button className={classes.headerButtons} variant="outlined" color="primary" onClick={goToBookmark}>My Bookmark</Button>
+            <Button className={classes.headerButtons} variant="contained" color="primary" onClick={addNewListing}>Add New Listing</Button>
             <Grid container justifyContent="center" alignItems="center" direction="column">
+            <Typography className={classes.Header} variant="body" color="textPrimary" component="h1">My Listings</Typography>
                 {mysellingitems.map(item => {
                     return (
                         <Grid item xs={12} className={classes.cardGrid} key = {item.id}>

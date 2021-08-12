@@ -36,6 +36,9 @@ function ListingDetail() {
         Header: {
             padding: '10px',
         },
+        headerButtons: {
+            margin: '8px 4px 0px 4px',
+        },
     });
     const classes = useStyles();
     // Material-UI
@@ -65,10 +68,10 @@ function ListingDetail() {
     }
 
     return(
-        <Container>
-            <Button variant="outlined" color="primary" onClick={goToMyListings}>Back</Button>
-            <Typography className={classes.Header} variant="body" color="textPrimary" component="h1">{listingItemDetail.name}</Typography>
+        <Container className={classes.container}>
+            <Button className={classes.headerButtons} variant="outlined" color="primary" onClick={goToMyListings}>Back</Button>
             <Grid container justifyContent="center" alignItems="center" direction="column">
+            <Typography className={classes.Header} variant="body" color="textPrimary" component="h1">{listingItemDetail.name}</Typography>
                 <Grid item item xs={12} className={classes.cardGrid}>
                     <Card className={classes.root}>
                         <CardMedia className={classes.media} image={listingItemDetail.image_url} />

@@ -48,6 +48,12 @@ function EditListingView() {
             selectors: {
                 padding: '8px 0px 8px 0px',
             },
+            headerButtons: {
+                margin: '8px 4px 0px 4px',
+            },
+            updateAndCancel: {
+                margin: "8px 8px 8px 8px"
+            }
         });
         const classes = useStyles();
         // Material-UI
@@ -107,12 +113,12 @@ function EditListingView() {
 
     return (
         <Container className={classes.container}>
-            <Button variant="outlined" color="primary" onClick={() => {{backToActivity(listingItemDetail.id)}}}>Back</Button>
-            <Typography className={classes.Header} variant="body" color="textPrimary" component="h1">Edit Listing</Typography>
+            <Button className={classes.headerButtons}  variant="outlined" color="primary" onClick={() => {{backToActivity(listingItemDetail.id)}}}>Back</Button>
             <Grid container justifyContent="center" alignItems="center" direction="column">
-                <Grid item item xs={12} className={classes.cardGrid}>
+            <Typography className={classes.Header} variant="body" color="textPrimary" component="h1">Edit Listing</Typography>
+                <Grid item xs={12} className={classes.cardGrid}>
                     <Card className={classes.root}>
-                        <FormControl onSubmit={editItemDetails}>
+                        <form onSubmit={editItemDetails}>
                             <CardMedia className={classes.media} image={listingItemDetail.image_url} />
                             <CardActionArea>
                                 <CardContent>
@@ -122,7 +128,6 @@ function EditListingView() {
                                     <TextField className={classes.textField} id="filled-basic" label="Description" variant="filled" type="text" value={description} onChange={event => setDescription(event.target.value)} />
                                 </CardContent>
                             </CardActionArea>
-                            <FormControl>
                                 <InputLabel id="select-label">Categoriess</InputLabel>
                                 <Select className={classes.selectors} onChange={event => setCategory(event.target.value)}>
                                     {categoryTypes.map(category => {
@@ -131,8 +136,6 @@ function EditListingView() {
                                         )
                                     })}
                                 </Select>
-                            </FormControl>
-                            <FormControl>
                                 <InputLabel id="select-label">Status</InputLabel>
                                 <Select className={classes.selectors}  onChange={event => setStatus(event.target.value)}>
                                     {statusTypes.map(status => {
@@ -141,12 +144,11 @@ function EditListingView() {
                                         )
                                     })}
                                 </Select>
-                            </FormControl>
-                            <CardActions>
+                            <div>
                                 <Button size="small" color="primary" type="submit" >Update Listing</Button>
                                 <Button size="small" color="primary" onClick={() => {{backToActivity(listingItemDetail.id)}}}>Cancel</Button>
-                            </CardActions>
-                        </FormControl>
+                            </div>
+                        </form>
                     </Card>
                 </Grid>
             </Grid>

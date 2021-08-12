@@ -37,6 +37,9 @@ function BookmarkView() {
         Header: {
             padding: '10px',
         },
+        headerButtons: {
+            margin: '8px 4px 0px 4px',
+        },
     });
     const classes = useStyles();
     // Material-UI
@@ -66,9 +69,9 @@ function BookmarkView() {
 
     return(
         <Container className={classes.container} >
-            <Button variant="outlined" color="primary" onClick={goToMyListing}>My Listings</Button>
-            <Typography className={classes.Header} className={classes.listingHeader} variant="body" color="textPrimary" component="h1">My Bookmarks</Typography>
+            <Button className={classes.headerButtons} variant="outlined" color="primary" onClick={goToMyListing}>My Listings</Button>
             <Grid container justifyContent="center" alignItems="center" direction="column">
+            <Typography className={classes.Header} className={classes.listingHeader} variant="body" color="textPrimary" component="h1">My Bookmarks</Typography>
                 {userBookmark.map(item => {
                     return (
                         <Grid item xs={12} className={classes.cardGrid} key={item.id}>
