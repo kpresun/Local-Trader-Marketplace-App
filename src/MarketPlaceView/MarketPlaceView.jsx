@@ -65,6 +65,7 @@ function Marketplace() {
     return(
         <Container className={classes.container} >
             <Grid container justifyContent="center" alignItems="center" direction="column">
+            <Typography className={classes.Header} variant="body" color="textPrimary" component="h1">Local Traders</Typography>
             <Typography className={classes.Header} variant="body" color="textPrimary" component="h1">Marketplace</Typography>
                 {allProducts.map(product => {
                     return (
