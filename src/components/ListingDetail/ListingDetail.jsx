@@ -63,7 +63,6 @@ function ListingDetail() {
 
     // go back to edit view
     const goToEditView = (itemId) => {
-        console.log('Inside goToEditView');
         history.push(`/activity/edit/${itemId}`);
     }
 

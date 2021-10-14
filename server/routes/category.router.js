@@ -13,7 +13,6 @@ router.get('/', (req, res) => {
       res.send(dbResponse.rows);
   })
   .catch(error => {
-      console.log('--ERROR-- router.get, unable to return categories:', error);
       res.sendStatus(500);
   })
 });

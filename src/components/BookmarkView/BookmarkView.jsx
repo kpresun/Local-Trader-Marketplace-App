@@ -65,7 +65,6 @@ function BookmarkView() {
     // click to go to delete bookmark
     const deleteBookmark = (deleteID) => {
         dispatch({ type: 'DELETE_BOOKMARK', payload: deleteID});
-        console.log('--LOG-- ID to delete:', deleteID);
     }
 
     // click to go to my listings view
